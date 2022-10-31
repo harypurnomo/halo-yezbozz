@@ -9,14 +9,14 @@
 @endsection
 
 @section('content')
-<section id="content">
+<section id="content" class="m-top-75">
 
 	<div class="content-wrap nopadding">
 
 		<div class="section nopadding nomargin" style="width: 100%; height: 100%; position: absolute; left: 0; top: 0; background: #444;"></div>
 
-		<div class="section bg-img full-screen nopadding nomargin">
-			<div class="container-fluid vertical-middle divcenter clearfix">
+		<div class="section bg-light nopadding nomargin">
+			<div class="container-fluid divcenter clearfix">
 
 				<div class="center">
 					<a href="{{ url('/') }}">
