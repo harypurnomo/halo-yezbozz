@@ -1,0 +1,78 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+.bg-img{
+	background-image: url('../client/bg-img.jpg') !important;
+	background-repeat: repeat;
+}
+
+.bg-dots{
+	background-image: url('../client/bg-dots.png') !important;
+	background-repeat: repeat;
+}
+
+.bg-light{
+	background-image: url('../client/bg-light.webp') !important;
+	background-repeat: repeat;
+}
+
+.b-shadow-v1{
+	box-shadow: 0px 0px 17px #F1F3F4;
+}
+
+/* Button */
+.gradient-blue-purple, .h-gradient-blue-purple:hover {
+    background-image: -webkit-linear-gradient(to right,#4a00e0,#8e2de2)!important;
+    background-image: linear-gradient(to right,#4a00e0,#8e2de2)!important;
+}
+
+.gradient-ocean, .h-gradient-ocean:hover {
+    background-image: -webkit-linear-gradient(to right,#000046,#1cb5e0)!important;
+    background-image: linear-gradient(to right,#000046,#1cb5e0)!important;
+}
+
+.gradient-blue-green, .h-gradient-blue-green:hover {
+    background-image: -webkit-linear-gradient(to right,#2af598 0,#009efd 100%)!important;
+    background-image: linear-gradient(to right,#2af598 0,#009efd 100%)!important;
+}
+
+/* Text */
+.t-red{
+	color: #E93942;
+}
+
+.t-white{
+	color: #F5F5F5;
+}
+
+.t-blue{
+	color: #007bff;
+}
+
+/* Margin & Padding */
+.m-top-10{
+	margin-top: 10px !important;
+}
+
+.m-top-75{
+	margin-top: 75px !important;
+}
+
+.m-bottom-10{
+	margin-bottom: 10px !important;
+}
+
+.p-10{
+	padding: 10px !important;
+}
+
+.p-40{
+	padding: 40px !important;
+}
+
+.hoverable {
+	cursor: pointer;
+}

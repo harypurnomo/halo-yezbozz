@@ -1,0 +1,36 @@
+.top-links li a img{
+	border-radius: 0px;
+	background-color: transparent;
+}
+
+.text-justify{
+	text-align: justify;
+    font-size: 15px;
+    line-height: 27px;
+}
+
+.white-popup {
+	position: relative;
+	background: #FFF;
+	padding: 0px 0px 0px 0px;
+	width: auto;
+	max-width: 800px;
+	margin: 20px auto;
+}
+.mfp-content {
+	text-align: center !important;
+}
+.white-popup img {
+	width: 800px !important;
+}
+
+.text-center {
+	text-align: center !important;
+}
+.popup-content {
+	padding-top: 20px;
+}
+
+.middle-align {
+	vertical-align: middle !important;
+}
