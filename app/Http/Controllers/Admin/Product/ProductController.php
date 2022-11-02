@@ -45,8 +45,8 @@ class ProductController extends Controller
 
         $rules=[
             'slug'=>'required',
-            'product_title_en'=>'required|min:5|max:80',
-            'product_title_id'=>'required|min:5|max:80',
+            'product_title_en'=>'required|min:3|max:80',
+            'product_title_id'=>'required|min:3|max:80',
             'product_brief_en'=>'required',
             'product_brief_id'=>'required',
             'product_category_id'=>'required',
@@ -132,8 +132,8 @@ class ProductController extends Controller
 
         $rules=[
             'slug'=>'required',
-            'product_title_en'=>'required|min:5|max:80',
-            'product_title_id'=>'required|min:5|max:80',
+            'product_title_en'=>'required|min:3|max:80',
+            'product_title_id'=>'required|min:3|max:80',
             'product_brief_en'=>'required',
             'product_brief_id'=>'required',
             'product_category_id'=>'required',

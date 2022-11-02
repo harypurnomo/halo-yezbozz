@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Article Title ID <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="article_title_id" class="form-control" placeholder="Your Article Title" value="{{ $recArticleByID->article_title_id }}" required="" minlength="5" maxlength="100">
+                                    <input type="text" id="article_title_id" name="article_title_id" class="form-control" placeholder="Your Article Title" value="{{ $recArticleByID->article_title_id }}" required="" minlength="5" maxlength="100">
                                 </div>
                                 <div class="form-group">
                                     <label>Article Brief ID <span class="kt-font-danger">*</span></label>
@@ -241,7 +241,7 @@
 @section('js')
 <script language="javascript" type="text/javascript">
 $(function(){
-    $("#article_title_en").keyup(function(){
+    $("#article_title_id").keyup(function(){
         var Text = $(this).val();
         Text = Text.toLowerCase();
         Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');

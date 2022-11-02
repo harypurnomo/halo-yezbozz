@@ -75,7 +75,7 @@
                                 
                                 <div class="form-group">
                                     <label>Article Title ID <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="article_title_id" class="form-control" placeholder="Your Article Title" value="{{ old('article_title_id') }}" required="" minlength="5" maxlength="100">
+                                    <input type="text" id="article_title_id" name="article_title_id" class="form-control" placeholder="Your Article Title" value="{{ old('article_title_id') }}" required="" minlength="5" maxlength="100">
                                 </div>
         
                                 <div class="form-group">
@@ -127,7 +127,7 @@
                                     <select class="form-control col-4" name="article_category_id" required="">
                                         <option value="">-- choose one of them --</option>
                                         @foreach ($recArticlesCategory as $item)
-                                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                            <option value="{{ $item->id }}" {{ (old('article_category_id')==$item->id)?'selected':'' }}>{{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -141,8 +141,8 @@
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="1" {{ (old('is_active')==1)?'selected':'' }}>Yes</option>
+                                        <option value="0" {{ (old('is_active')==0)?'selected':'' }}>No</option>
                                     </select>
                                 </div>
         
@@ -150,8 +150,8 @@
                                     <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_hot" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="1" {{ (old('is_hot')==1)?'selected':'' }}>Yes</option>
+                                        <option value="0" {{ (old('is_hot')==0)?'selected':'' }}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@
 @section('js')
 <script language="javascript" type="text/javascript">
 $(function(){
-    $("#article_title_en").keyup(function(){
+    $("#article_title_id").keyup(function(){
         var Text = $(this).val();
         Text = Text.toLowerCase();
         Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');

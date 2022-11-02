@@ -56,7 +56,6 @@
                             <th width="100">#No</th>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>Brief EN</th>
                             <th>Brief ID</th>
                             <th>Last Updated</th>
                             <th>Active</th>
@@ -68,9 +67,8 @@
                         @foreach ($recArticles as $index => $row)
                         <tr>
                             <td>{{ ++$index }}</td>
-                            <td><a href="{{ route('master-article.edit',['id'=>$row->id]) }}">{{ $row->article_title_en }}</a></td>
+                            <td><a href="{{ route('master-article.edit',['id'=>$row->id]) }}">{{ $row->article_title_id }}</a></td>
                             <td>{{ $row->category_name }}</td>
-                            <td>{{ $row->article_brief_en }}</td>
                             <td>{{ $row->article_brief_id }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>

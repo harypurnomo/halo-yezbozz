@@ -55,7 +55,7 @@
 						@endif
                         <div class="form-group">
                             <label>Category Name <span class="kt-font-danger">*</span></label>
-                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Your Category Name" required="" minlength="5" maxlength="50">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Your Category Name" required="" minlength="3" maxlength="50">
                         </div>
                         <div class="form-group">
                             <label for="is_active">Active <span class="kt-font-danger">*</span></label>

@@ -24,7 +24,7 @@ class ProductCategoryController extends Controller
         Library::validateAccess('view',$this->moduleLink);
 
         return view('admin.productcategory.index')
-        ->with('recProductsCategory',ProductsCategory::orderBy('updated_at','desc')->get());
+        ->with('recProductsCategory',ProductsCategory::orderBy('name','asc')->get());
     }
 
     public function create()
@@ -39,7 +39,7 @@ class ProductCategoryController extends Controller
     {    	
         // dd($request->all());
         $rules=[
-            'name'=>'required|min:5|max:50'
+            'name'=>'required|min:3|max:50'
         ];
 
         $validation = Validator::make($request->input(),$rules);
@@ -67,7 +67,7 @@ class ProductCategoryController extends Controller
     {
         // dd($request->all());
         $rules=[
-            'name'=>'required|min:5|max:50'
+            'name'=>'required|min:3|max:50'
         ];
 
         $validation = Validator::make($request->input(),$rules);
