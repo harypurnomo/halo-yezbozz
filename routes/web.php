@@ -158,10 +158,13 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::get('master-group-announcement/manage-recipients/delete-recipients/{id}/{groups_announcement_id}', 'Admin\GroupAnnouncement\GroupAnnouncementController@destroyRecipients')->name('manage-recipients.delete');
     Route::get('master-broadcast-track/{id}/{email}', 'Admin\Broadcast\BroadcastController@detailLinkClick');
 
-    //Articles
+    //Sales
     Route::resource('master-product', 'Admin\Product\ProductController');
     Route::get('master-product-delete/{id}', 'Admin\Product\ProductController@deleteFile')->name('master.product.delete');
     Route::resource('master-category-of-product', 'Admin\ProductCategory\ProductCategoryController');
+
+    //Transaction
+    Route::resource('master-transaction', 'Admin\Transaction\TransactionController');
 
     //Billings Tenant
     Route::resource('master-billing', 'Admin\Billing\BillingController');

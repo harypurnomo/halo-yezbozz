@@ -178,4 +178,25 @@ class GroupController extends Controller
         return response()->json(['status'=>1,'msg'=>'Your work has been saved!'], 200);
     }
 
+    public function destroy($id)
+    {
+        // Validate Access
+        Library::validateAccess('delete',$this->moduleLink);
+
+        try
+        {
+            $Groups = Groups::find($id);
+            $Groups->delete();
+
+            $GroupModule = GroupModule::where('group_id',$id);
+            $GroupModule->delete();
+
+            return response()->json(['status'=>1,'msg'=>'Your work has been saved!'], 200);
+        } 
+        catch (\Exection $e) 
+        {
+            return response()->json(['status'=>0,'error'=>$e->getMessage()], 200);
+        }
+    }
+
 }

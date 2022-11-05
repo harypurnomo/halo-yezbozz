@@ -57,6 +57,7 @@
                             <th>Group Name</th>
                             <th>Last Updated</th>
                             <th>Active</th>
+                            <th></th>
                         </tr>
                     </thead>                   
                     <tbody>
@@ -67,6 +68,11 @@
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
                                 {!! ($row->is_active=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
+                            </td>
+                            <td>
+                                <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->group_id }}" data-link="administrator/master-group">
+                                    <i class="flaticon2-trash"></i> Remove
+                                </span>
                             </td>
                         </tr>
                         @endforeach

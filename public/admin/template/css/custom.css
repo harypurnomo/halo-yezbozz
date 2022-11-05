@@ -54,3 +54,15 @@
 .vertical-menu, .horizontal-menu {
     cursor: pointer !important;
 }
+
+.kt-aside-menu .kt-menu__nav > .kt-menu__item > .kt-menu__link .kt-menu__link-text {
+    font-size:1.2rem;
+}
+
+.kt-aside-menu .kt-menu__nav > .kt-menu__item .kt-menu__submenu .kt-menu__item > .kt-menu__link .kt-menu__link-text{
+    font-size:1.1rem;
+}
+
+.card-header-tabs{
+    border:1px solid #e6e6e6;
+}
