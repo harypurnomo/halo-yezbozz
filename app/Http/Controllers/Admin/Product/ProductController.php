@@ -42,13 +42,9 @@ class ProductController extends Controller
         $price = str_replace(".", "", $request['price']);
         $tax = str_replace(".", "", $request['tax']);
 
-
         $rules=[
             'slug'=>'required',
-            'product_title_en'=>'required|min:3|max:80',
-            'product_title_id'=>'required|min:3|max:80',
-            'product_brief_en'=>'required',
-            'product_brief_id'=>'required',
+            'product_title_id'=>'required|min:3|max:100',
             'product_category_id'=>'required',
             'is_active'=>'required',
             'is_hot'=>'required'
@@ -67,6 +63,9 @@ class ProductController extends Controller
         $rec->product_brief_id = trim($request->input('product_brief_id'));
         $rec->product_desc_en = trim($request->input('product_desc_en'));
         $rec->product_desc_id = trim($request->input('product_desc_id'));
+        $rec->seo_title = trim($request->input('seo_title'));
+        $rec->seo_keyword = trim($request->input('seo_keyword'));
+        $rec->seo_description = trim($request->input('seo_description'));
         $rec->price = doubleval(str_replace(",",".",$price));
         $rec->tax = doubleval(str_replace(",",".",$tax));
         $rec->external_link = trim($request->input('external_link'));
@@ -129,13 +128,9 @@ class ProductController extends Controller
         $price = str_replace(".", "", $request['price']);
         $tax = str_replace(".", "", $request['tax']);
 
-
         $rules=[
             'slug'=>'required',
-            'product_title_en'=>'required|min:3|max:80',
-            'product_title_id'=>'required|min:3|max:80',
-            'product_brief_en'=>'required',
-            'product_brief_id'=>'required',
+            'product_title_id'=>'required|min:3|max:100',
             'product_category_id'=>'required',
             'is_active'=>'required',
             'is_hot'=>'required'
@@ -154,6 +149,9 @@ class ProductController extends Controller
         $rec->product_brief_id = trim($request->input('product_brief_id'));
         $rec->product_desc_en = trim($request->input('product_desc_en'));
         $rec->product_desc_id = trim($request->input('product_desc_id'));
+        $rec->seo_title = trim($request->input('seo_title'));
+        $rec->seo_keyword = trim($request->input('seo_keyword'));
+        $rec->seo_description = trim($request->input('seo_description'));
         $rec->price = doubleval(str_replace(",",".",$price));
         $rec->tax = doubleval(str_replace(",",".",$tax));
         $rec->external_link = trim($request->input('external_link'));

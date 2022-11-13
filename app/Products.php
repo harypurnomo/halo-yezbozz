@@ -15,7 +15,9 @@ class Products extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'product_category_id', 'product_title_en', 'product_title_id', 'product_brief_en', 'product_brief_id', 'product_desc_en', 'product_desc_id', 'slug', 'banner', 'thumb', 'file_attachement', 'price', 'tax', 'external_link', 'is_active', 'is_hot', 'created_at', 'created_by', 'updated_at', 'updated_by'
+        'id', 'product_category_id', 'product_title_en', 'product_title_id', 'product_brief_en', 
+        'product_brief_id', 'product_desc_en', 'product_desc_id', 'slug', 'banner', 'thumb', 'file_attachement', 'seo_title', 'seo_keyword', 'seo_description',
+        'price', 'tax', 'external_link', 'is_active', 'is_hot', 'created_at', 'created_by', 'updated_at', 'updated_by'
     ];
 
     protected $primaryKey = 'id';

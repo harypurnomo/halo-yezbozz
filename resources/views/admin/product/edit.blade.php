@@ -55,129 +55,170 @@
                             </ul>
                         </div>
                         @endif
-                        <div class="form-group">
-                            <label>Slug <span class="kt-font-danger">*</span></label>
-                            <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ $recProductsByID->slug }}" readonly="">
-                            <small>Automatically</small>
-                        </div>
-                        <div class="form-group">
-                            <label>Product Title EN <span class="kt-font-danger">*</span></label>
-                            <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your product Title" value="{{ $recProductsByID->product_title_en }}" required="" minlength="5" maxlength="80">
-                        </div>
-                        <div class="form-group">
-                            <label>Product Title ID <span class="kt-font-danger">*</span></label>
-                            <input type="text" name="product_title_id" class="form-control" placeholder="Your product Title" value="{{ $recProductsByID->product_title_id }}" required="" minlength="5" maxlength="80">
-                        </div>
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="tab-general" data-toggle="tab" href="#general" role="tab" aria-controls="One" aria-selected="true">General</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-optional" data-toggle="tab" href="#optional" role="tab" aria-controls="Two" aria-selected="false">Optional</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-seo" data-toggle="tab" href="#seo" role="tab" aria-controls="Three" aria-selected="false">SEO</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active p-3" id="general" role="tabpanel" aria-labelledby="tab-general">
+                                <div class="form-group">
+                                    <label>Slug <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ $recProductsByID->slug }}" readonly="">
+                                    <small>Automatically</small>
+                                </div>
+                        
+                                <div class="form-group">
+                                    <label>Product Title ID <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="product_title_id" id="product_title_id" class="form-control" placeholder="Your product Title" value="{{ $recProductsByID->product_title_id }}" required="" minlength="3" maxlength="80">
+                                    <span id="char-product_title_id">100</span> Character(s) Remaining
+                                </div>
 
-                        <div class="form-group">
-                            <label>Product Brief EN <span class="kt-font-danger">*</span></label>
-                            <textarea name="product_brief_en" id="product_brief_en" class="form-control" maxlength="140" required="">{{ $recProductsByID->product_brief_en }}</textarea>
-                            <span id="char-product_brief_en">140</span> Character(s) Remaining
-                        </div>
-                        <div class="form-group">
-                            <label>Product Brief ID <span class="kt-font-danger">*</span></label>
-                            <textarea name="product_brief_id" id="product_brief_id" class="form-control" maxlength="140" required="">{{ $recProductsByID->product_brief_id }}</textarea>
-                            <span id="char-product_brief_id">140</span> Character(s) Remaining
-                        </div>
+                                <div class="form-group">
+                                    <label>Product Brief ID</label>
+                                    <textarea name="product_brief_id" id="product_brief_id" class="form-control" maxlength="140">{{ $recProductsByID->product_brief_id }}</textarea>
+                                    <span id="char-product_brief_id">140</span> Character(s) Remaining
+                                </div>
 
-                        <div class="form-group">
-                            <label>Product Description EN</label>
-                            <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ $recProductsByID->product_desc_en }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Product Description ID</label>
-                            <textarea name="product_desc_id" id="product_desc_id" class="form-control summernote">{{ $recProductsByID->product_desc_en }}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Price </label>
-                            <input type="text" name="price" class="form-control input-numeral" placeholder="Your Product Price" value="{{ number_format($recProductsByID->price,2,",",".") }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Tax </label>
-                            <input type="text" name="tax" class="form-control tax" placeholder="Your Product Tax" value="{{ number_format($recProductsByID->tax,2,",",".") }}">
-                        </div>
-                        <div class="form-group">
-                            <label>External Link</label>
-                            <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ $recProductsByID->external_link }}">
-                        </div>
-                        <div class="form-group">
-                            <label>Banner</label>
-                            <div class="col-4">
-                                <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
-                                    @if($recProductsByID->banner=='')
-                                    <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
+                                <div class="form-group">
+                                    <label>Product Description ID</label>
+                                    <textarea name="product_desc_id" id="product_desc_id" class="form-control summernote">{{ $recProductsByID->product_desc_id }}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Price </label>
+                                    <input type="text" name="price" class="form-control input-numeral" placeholder="Your Product Price" value="{{ number_format($recProductsByID->price,2,",",".") }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tax </label>
+                                    <input type="text" name="tax" class="form-control tax" placeholder="Your Product Tax" value="{{ number_format($recProductsByID->tax,2,",",".") }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ $recProductsByID->external_link }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Banner</label>
+                                    <div class="col-4">
+                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
+                                            @if($recProductsByID->banner=='')
+                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
+                                            @else
+                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/product/banner') }}/{{ $recProductsByID->banner }})"></div>
+                                            @endif
+                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
+                                                <i class="fa fa-pen"></i>
+                                                <input type="file" name="banner">
+                                            </label>
+                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <small>The best size 641 x 401</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>Thumbnail</label>
+                                    <div class="col-4">
+                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar2">
+                                            @if($recProductsByID->thumb=='')
+                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
+                                            @else
+                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/product/thumb') }}/{{ $recProductsByID->thumb }})"></div>
+                                            @endif
+                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
+                                                <i class="fa fa-pen"></i>
+                                                <input type="file" name="thumb">
+                                            </label>
+                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <small>The best size 415 x 275</small>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label>File Attachement</label><br>
+                                    @if($recProductsByID->file_attachement=='')
+                                    <a href="javascript:;">Not Available</a>
                                     @else
-                                    <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/product/banner') }}/{{ $recProductsByID->banner }})"></div>
+                                    <a href="{{ url('uploads/product/file_attachement') }}/{{ $recProductsByID->file_attachement }}" target="_blank">{{ $recProductsByID->file_attachement }}</a>
+                                     <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.product.delete',['id'=>$recProductsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
                                     @endif
-                                    <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
-                                        <i class="fa fa-pen"></i>
-                                        <input type="file" name="banner">
-                                    </label>
-                                    <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
-                                        <i class="fa fa-times"></i>
-                                    </span>
+                                    <input type="file" name="files" class="form-control file-uploads">
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="product_category_id">Product Category <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="product_category_id" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        @foreach ($recProductsCategory as $item)
+                                            <option value="{{ $item->id }}" {{ ($recProductsByID->product_category_id==$item->id)?'selected':'' }}>{{ $item->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="is_active">Active <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="is_active" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="1" {{ ($recProductsByID->is_active==1)?'selected':'' }}>Yes</option>
+                                        <option value="0" {{ ($recProductsByID->is_active==0)?'selected':'' }}>No</option>
+                                    </select>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="is_hot" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="1" {{ ($recProductsByID->is_hot==1)?'selected':'' }}>Yes</option>
+                                        <option value="0" {{ ($recProductsByID->is_hot==0)?'selected':'' }}>No</option>
+                                    </select>
                                 </div>
                             </div>
-                            <small>The best size 641 x 401</small>
-                        </div>
-                        <div class="form-group">
-                            <label>Thumbnail</label>
-                            <div class="col-4">
-                                <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar2">
-                                    @if($recProductsByID->thumb=='')
-                                    <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
-                                    @else
-                                    <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/product/thumb') }}/{{ $recProductsByID->thumb }})"></div>
-                                    @endif
-                                    <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
-                                        <i class="fa fa-pen"></i>
-                                        <input type="file" name="thumb">
-                                    </label>
-                                    <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
-                                        <i class="fa fa-times"></i>
-                                    </span>
+
+                            <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
+                                <div class="form-group">
+                                    <label>Product Title EN</label>
+                                    <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your product Title" value="{{ $recProductsByID->product_title_en }}" minlength="3" maxlength="100">
+                                    <span id="char-product_title_en">100</span> Character(s) Remaining
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Product Brief EN</label>
+                                    <textarea name="product_brief_en" id="product_brief_en" class="form-control" maxlength="140">{{ $recProductsByID->product_brief_en }}</textarea>
+                                    <span id="char-product_brief_en">140</span> Character(s) Remaining
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Product Description EN</label>
+                                    <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ $recProductsByID->product_desc_en }}</textarea>
                                 </div>
                             </div>
-                            <small>The best size 415 x 275</small>
-                        </div>
+                        
+                            <div class="tab-pane fade p-3" id="seo" role="tabpanel" aria-labelledby="tab-seo">
+                                <div class="form-group">
+                                    <label>SEO Title</label>
+                                    <input type="text" name="seo_title" id="seo_title" class="form-control" placeholder="SEO Title" value="{{ $recProductsByID->seo_title }}" maxlength="250">
+                                </div>
 
-                        <div class="form-group">
-                            <label>File Attachement</label><br>
-                            @if($recProductsByID->file_attachement=='')
-                            <a href="javascript:;">Not Available</a>
-                            @else
-                            <a href="{{ url('uploads/product/file_attachement') }}/{{ $recProductsByID->file_attachement }}" target="_blank">{{ $recProductsByID->file_attachement }}</a>
-                             <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.product.delete',['id'=>$recProductsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
-                            @endif
-                            <input type="file" name="files" class="form-control file-uploads">
-                        </div>
+                                <div class="form-group">
+                                    <label>SEO Keyword</label>
+                                    <input type="text" name="seo_keyword" id="seo_keyword" class="form-control" placeholder="SEO Keyword" value="{{ $recProductsByID->seo_keyword }}" maxlength="250">
+                                </div>
 
-                        <div class="form-group">
-                            <label for="product_category_id">Product Category <span class="kt-font-danger">*</span></label>
-                            <select class="form-control col-4" name="product_category_id" required="">
-                                <option value="">-- choose one of them --</option>
-                                @foreach ($recProductsCategory as $item)
-                                    <option value="{{ $item->id }}" {{ ($recProductsByID->product_category_id==$item->id)?'selected':'' }}>{{ $item->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                                <div class="form-group">
+                                    <label>SEO Description</label>
+                                    <textarea name="seo_description" id="seo_description" class="form-control" maxlength="250">{{ $recProductsByID->seo_description }}</textarea>
+                                </div>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="is_active">Active <span class="kt-font-danger">*</span></label>
-                            <select class="form-control col-4" name="is_active" required="">
-                                <option value="">-- choose one of them --</option>
-                                <option value="1" {{ ($recProductsByID->is_active==1)?'selected':'' }}>Yes</option>
-                                <option value="0" {{ ($recProductsByID->is_active==0)?'selected':'' }}>No</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
-                            <select class="form-control col-4" name="is_hot" required="">
-                                <option value="">-- choose one of them --</option>
-                                <option value="1" {{ ($recProductsByID->is_hot==1)?'selected':'' }}>Yes</option>
-                                <option value="0" {{ ($recProductsByID->is_hot==0)?'selected':'' }}>No</option>
-                            </select>
                         </div>
                     </div>
                     <div class="kt-portlet__foot">
@@ -199,7 +240,7 @@
 
 <script language="javascript" type="text/javascript">
 $(function(){
-    $("#product_title_en").keyup(function(){
+    $("#product_title_id").keyup(function(){
         var Text = $(this).val();
         Text = Text.toLowerCase();
         Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
@@ -209,6 +250,22 @@ $(function(){
 </script>
 
 <script language="javascript" type="text/javascript">
+$(function(){
+    var maxLength = 100;
+    $('#product_title_id').keyup(function() {
+      var textlen = maxLength - $(this).val().length;
+      $('#char-product_title_id').text(textlen);
+    });
+});
+
+$(function(){
+    var maxLength = 100;
+    $('#product_title_en').keyup(function() {
+      var textlen = maxLength - $(this).val().length;
+      $('#char-product_title_en').text(textlen);
+    });
+});
+
 $(function(){
     var maxLength = 140;
     $('#product_brief_en').keyup(function() {

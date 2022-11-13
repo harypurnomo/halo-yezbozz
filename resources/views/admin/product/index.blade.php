@@ -53,35 +53,23 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
                     <thead>
                         <tr>
-                            <th width="100">#No</th>
-                            <th>Title</th>
+                            <th>Product</th>
                             <th>Category</th>
-                            <th>Brief EN</th>
-                            <th>Brief ID</th>
-                            <th>Price</th>
-                            <th>Tax</th>
+                            <th>Desc ID</th>
                             <th>Last Updated</th>
                             <th>Active</th>
-                            <th>Hot</th>
                             <th></th>
                         </tr>
                     </thead>                   
                     <tbody>
                         @foreach ($recProducts as $index => $row)
                         <tr>
-                            <td>{{ ++$index }}</td>
-                            <td><a href="{{ route('master-product.edit',['id'=>$row->id]) }}">{{ $row->product_title_en }}</a></td>
+                            <td><a href="{{ route('master-product.edit',['id'=>$row->id]) }}">{{ $row->product_title_id }}</a></td>
                             <td>{{ $row->category_name }}</td>
-                            <td>{{ $row->product_brief_en }}</td>
-                            <td>{{ $row->product_brief_id }}</td>
-                            <td>{{ number_format($row->price,2,",",".") }}</td>
-                            <td>{{ number_format($row->tax,2,",",".") }}</td>
+                            <td>{!! $row->product_desc_id !!}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
                                 {!! ($row->is_active=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
-                            </td>
-                            <td>
-                                {!! ($row->is_hot=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
                             </td>
                             <td>
                                 <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-product">

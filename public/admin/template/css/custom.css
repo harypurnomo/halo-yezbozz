@@ -66,3 +66,7 @@
 .card-header-tabs{
     border:1px solid #e6e6e6;
 }
+
+.nav-tabs .nav-item .nav-link.active{
+    background-color: #ebebeb;
+}
