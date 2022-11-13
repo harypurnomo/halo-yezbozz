@@ -33,7 +33,7 @@ class Products extends Model
         $strQuery = DB::table('products As a')
                     ->join('users As b','a.created_by','=','b.id')
                     ->join('products_category As c','a.product_category_id','=','c.id')
-                    ->orderBy('a.updated_at','desc')
+                    ->orderBy('a.product_title_id','asc')
                     ->select('a.*','b.name as user_name','c.name as category_name');
 
         return $strQuery;

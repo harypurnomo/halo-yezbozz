@@ -64,7 +64,7 @@
                     <tbody>
                         @foreach ($recProducts as $index => $row)
                         <tr>
-                            <td><a href="{{ route('master-product.edit',['id'=>$row->id]) }}">{{ $row->product_title_id }}</a></td>
+                            <td><a href="{{ route('master-product.edit',['id'=>$row->id]) }}">{{ strtoupper($row->product_title_id) }}</a></td>
                             <td>{{ $row->category_name }}</td>
                             <td>{!! $row->product_desc_id !!}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
