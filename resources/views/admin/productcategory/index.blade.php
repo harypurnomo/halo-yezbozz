@@ -57,7 +57,9 @@
                             <th>Category</th>
                             <th>last Updated</th>
                             <th>Active</th>
+                            @if (Auth::user()->group_id!=2)
                             <th></th>
+                            @endif
                         </tr>
                     </thead>                   
                     <tbody>
@@ -69,11 +71,13 @@
                             <td>
                                 {!! ($row->is_active=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
                             </td>
+                            @if (Auth::user()->group_id!=2)
                             <td>
                                 <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-category-of-product">
                                     <i class="flaticon2-trash"></i> Remove
                                 </span>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>                    
