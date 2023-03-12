@@ -28,6 +28,10 @@ class CompanyProfileController extends Controller
 
     public function update($id, Request $request)
     {
+
+        // dd($request->all());
+        // exit();
+
         $rules=[
             'company_name'=>'required|min:5|max:100',
             'company_brief_en'=>'required|min:5|max:250',
@@ -71,7 +75,7 @@ class CompanyProfileController extends Controller
         $rec->email = trim($request->input('email'));
         $rec->phone_number = trim($request->input('phone_number'));
         $rec->whatsapp_number = trim($request->input('whatsapp_number'));
-        $rec->fax = trim($request->input('fax'));
+        $rec->website = trim($request->input('website'));
         $rec->instagram = trim($request->input('instagram'));
         $rec->youtube = trim($request->input('youtube'));
         $rec->facebook = trim($request->input('facebook'));

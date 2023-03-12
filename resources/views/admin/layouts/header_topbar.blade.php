@@ -17,7 +17,7 @@
             <div class="kt-header__topbar-item kt-header__topbar-item--user">    
                 <div class="kt-header__topbar-wrapper" data-offset="0px,0px">
                     <div class="kt-header__topbar-user">
-                        <a href="{{ url('/') }}" target="_blank">View Site</a>
+                        <a href="{{ Library::companyProfile()[0]->website }}" target="_blank">View Site</a>
                     </div>
                 </div>
             </div>

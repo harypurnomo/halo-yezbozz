@@ -15,7 +15,7 @@ class CompanyProfile extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'company_name', 'logo', 'favicon', 'company_brief_en', 'company_brief_id', 'email', 'phone_number', 'whatsapp_number', 'address', 'fax', 'instagram', 'youtube', 'facebook', 'twitter', 'linkedin', 'created_at', 'updated_at'
+        'id', 'company_name', 'logo', 'favicon', 'company_brief_en', 'company_brief_id', 'email', 'phone_number', 'whatsapp_number', 'address', 'website', 'fax', 'instagram', 'youtube', 'facebook', 'twitter', 'linkedin', 'created_at', 'updated_at'
     ];
 
     protected $primaryKey = 'id';

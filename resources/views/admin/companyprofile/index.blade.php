@@ -123,8 +123,8 @@
                             <span>Format : 62XXXXXXXXXXX</span>
                         </div>
                         <div class="form-group">
-                            <label>Fax </label>
-                            <input type="text" name="fax" class="form-control" placeholder="Your Fax" value="{{ $element->fax }}" minlength="8" maxlength="30">
+                            <label>Website </label>
+                            <input type="text" name="website" class="form-control" placeholder="Your Website" value="{{ $element->website }}" minlength="5" maxlength="100">
                         </div>
                         <div class="form-group">
                             <label>Instagram</label>
