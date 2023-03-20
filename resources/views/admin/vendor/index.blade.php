@@ -53,7 +53,7 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
                     <thead>
                         <tr>
-                            <th>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
+                            <th>Name of {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
                             <th>Category</th>
                             <th>Location</th>
                             <th>External Links</th>

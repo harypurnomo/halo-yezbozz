@@ -74,41 +74,41 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Name <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" value="{{ old('name') }}" required="" minlength="3" maxlength="100">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Name" value="{{ old('name') }}" required="" minlength="3" maxlength="100">
                                     <span id="char-name">100</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
                                     <label>Email </label>
-                                    <input type="email" name="email" class="form-control input-numeral" placeholder="Your Email" value="{{ old('email') }}">
+                                    <input type="email" name="email" class="form-control " placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Email" value="{{ old('email') }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Phone Number </label>
-                                    <input type="number" class="form-control" name="phone" value="value="{{ old('phone') }}" placeholder="Your Phone Number" minlength="8" maxlength="30">
+                                    <input type="number" class="form-control" name="phone" value="value="{{ old('phone') }}" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Phone Number" minlength="8" maxlength="30">
                                 </div>
                                 <div class="form-group">
-                                    <label>Address</label>
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Address</label>
                                     <textarea name="address" class="form-control summernote">{{ old('address') }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Locations With Coordinate </label>
-                                    <input type="text" name="coordinate" class="form-control tax" placeholder="Your Locations With Coordinate" value="{{ old('coordinate') }}">
+                                    <input type="text" name="coordinate" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Locations With Coordinate" value="{{ old('coordinate') }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="is_active">Vendor Category <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_category" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="1">Barang</option>
-                                        <option value="2">Jasa</option>
-                                        <option value="3">Barang & Jasa</option>
+                                        <option value="barang">Barang</option>
+                                        <option value="jasa">Jasa</option>
+                                        <option value="barang jasa">Barang Jasa</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="is_active">Vendor Type of Location <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_location" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="1">Online Store</option>
-                                        <option value="2">Offline Store</option>
-                                        <option value="3">Online & Offline Store</option>
+                                        <option value="online store">Online Store</option>
+                                        <option value="offline store">Offline Store</option>
+                                        <option value="online offline store">Online & Offline Store</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -154,7 +154,6 @@
                                 <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
-                                        <option value="">-- choose one of them --</option>
                                         <option value="1">Yes</option>
                                         <option value="0">No</option>
                                     </select>
