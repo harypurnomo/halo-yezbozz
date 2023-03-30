@@ -31,9 +31,8 @@ class Vendors extends Model
 
     public static function getAll(){
         $strQuery = DB::table('vendors As a')
-                    ->join('users As b','a.created_by','=','b.id')
                     ->orderBy('a.name','asc')
-                    ->select('a.*','b.name as user_name');
+                    ->select('a.*');
 
         return $strQuery;
     }

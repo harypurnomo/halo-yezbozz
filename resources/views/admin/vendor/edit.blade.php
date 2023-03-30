@@ -18,7 +18,7 @@
 
         <div class="kt-subheader__toolbar">
             <div class="kt-subheader__wrapper">
-                <a href="{{ route('master-product.index') }}" class="btn kt-subheader__btn-primary">Back To List &nbsp;</a>
+                <a href="{{ route('master-vendor.index') }}" class="btn kt-subheader__btn-primary">Back To List &nbsp;</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             <div class="kt-portlet__body">
 
                 <!--begin::Form-->
-                <form class="kt-form" action="{{ route('master-product.update',['id'=>$recProductsByID->id]) }}" method="post" enctype="multipart/form-data">
+                <form class="kt-form" action="{{ route('master-vendor.update',['id'=>$recVendorsByID->id]) }}" method="post" enctype="multipart/form-data">
                     {{method_field('PUT')}}
                     {{ csrf_field() }}
                     <input type="hidden" name="updated_by" value="{{ Auth::user()->id }}">
@@ -70,46 +70,60 @@
                             <div class="tab-pane fade show active p-3" id="general" role="tabpanel" aria-labelledby="tab-general">
                                 <div class="form-group">
                                     <label>Slug <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ $recProductsByID->slug }}" readonly="">
+                                    <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ $recVendorsByID->slug }}" readonly="">
                                     <small>Automatically</small>
                                 </div>
-                        
                                 <div class="form-group">
-                                    <label>Product Title ID <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="product_title_id" id="product_title_id" class="form-control" placeholder="Your product Title" value="{{ $recProductsByID->product_title_id }}" required="" minlength="3" maxlength="80">
-                                    <span id="char-product_title_id">100</span> Character(s) Remaining
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Product Brief ID</label>
-                                    <textarea name="product_brief_id" id="product_brief_id" class="form-control" maxlength="140">{{ $recProductsByID->product_brief_id }}</textarea>
-                                    <span id="char-product_brief_id">140</span> Character(s) Remaining
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Product Description ID</label>
-                                    <textarea name="product_desc_id" id="product_desc_id" class="form-control summernote">{{ $recProductsByID->product_desc_id }}</textarea>
+                                    <label>Name <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Name" value="{{ $recVendorsByID->name }}" required="" minlength="3" maxlength="100">
+                                    <span id="char-name">100</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
-                                    <label>Price </label>
-                                    <input type="text" name="price" class="form-control input-numeral" placeholder="Your Product Price" value="{{ number_format($recProductsByID->price,2,",",".") }}">
+                                    <label>Email </label>
+                                    <input type="email" name="email" class="form-control " placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Email" value="{{ $recVendorsByID->email }}">
                                 </div>
                                 <div class="form-group">
-                                    <label>Tax </label>
-                                    <input type="text" name="tax" class="form-control tax" placeholder="Your Product Tax" value="{{ number_format($recProductsByID->tax,2,",",".") }}">
+                                    <label>Phone Number </label>
+                                    <input type="number" class="form-control" name="phone" value="{{ $recVendorsByID->phone }}" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Phone Number" minlength="8" maxlength="30">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Address</label>
+                                    <textarea name="address" class="form-control summernote">{!! $recVendorsByID->address !!}</textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label>Locations With Coordinate </label>
+                                    <input type="text" name="coordinate" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Locations With Coordinate" value="{{ $recVendorsByID->coordinate }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="is_active">Vendor Category <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="is_category" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="barang" {{ ($recVendorsByID->is_category=="barang")?'selected':'' }}>Barang</option>
+                                        <option value="jasa" {{ ($recVendorsByID->is_category=="jasa")?'selected':'' }}>Jasa</option>
+                                        <option value="barang jasa" {{ ($recVendorsByID->is_category=="barang jasa")?'selected':'' }}>Barang Jasa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="is_active">Vendor Type of Location <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="is_location" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="online store" {{ ($recVendorsByID->is_location=="online store")?'selected':'' }}>Online Store</option>
+                                        <option value="offline store" {{ ($recVendorsByID->is_location=="offline store")?'selected':'' }}>Offline Store</option>
+                                        <option value="online offline store" {{ ($recVendorsByID->is_location=="online offline store")?'selected':'' }}>Online & Offline Store</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label>External Link</label>
-                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ $recProductsByID->external_link }}">
+                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ $recVendorsByID->external_link }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Banner</label>
                                     <div class="col-4">
                                         <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
-                                            @if($recProductsByID->banner=='')
+                                            @if($recVendorsByID->banner=='')
                                             <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
                                             @else
-                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/product/banner') }}/{{ $recProductsByID->banner }})"></div>
+                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/vendor/banner') }}/{{ $recVendorsByID->banner }})"></div>
                                             @endif
                                             <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
                                                 <i class="fa fa-pen"></i>
@@ -126,10 +140,10 @@
                                     <label>Thumbnail</label>
                                     <div class="col-4">
                                         <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar2">
-                                            @if($recProductsByID->thumb=='')
+                                            @if($recVendorsByID->thumb=='')
                                             <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
                                             @else
-                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/product/thumb') }}/{{ $recProductsByID->thumb }})"></div>
+                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/vendor/thumb') }}/{{ $recVendorsByID->thumb }})"></div>
                                             @endif
                                             <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
                                                 <i class="fa fa-pen"></i>
@@ -142,83 +156,49 @@
                                     </div>
                                     <small>The best size 415 x 275</small>
                                 </div>
-        
                                 <div class="form-group">
                                     <label>File Attachement</label><br>
-                                    @if($recProductsByID->file_attachement=='')
+                                    @if($recVendorsByID->file_attachement=='')
                                     <a href="javascript:;">Not Available</a>
                                     @else
-                                    <a href="{{ url('uploads/product/file_attachement') }}/{{ $recProductsByID->file_attachement }}" target="_blank">{{ $recProductsByID->file_attachement }}</a>
-                                     <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.product.delete',['id'=>$recProductsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
+                                    <a href="{{ url('uploads/vendor/file_attachement') }}/{{ $recVendorsByID->file_attachement }}" target="_blank">{{ $recVendorsByID->file_attachement }}</a>
+                                     <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.vendor.delete',['id'=>$recVendorsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
                                     @endif
                                     <input type="file" name="files" class="form-control file-uploads">
                                 </div>
-        
-                                <div class="form-group">
-                                    <label for="product_category_id">Product Category <span class="kt-font-danger">*</span></label>
-                                    <select class="form-control col-4" name="product_category_id" required="">
-                                        <option value="">-- choose one of them --</option>
-                                        @foreach ($recProductsCategory as $item)
-                                            <option value="{{ $item->id }}" {{ ($recProductsByID->product_category_id==$item->id)?'selected':'' }}>{{ $item->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-        
                                 <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
-                                        <option value="">-- choose one of them --</option>
-                                        <option value="1" {{ ($recProductsByID->is_active==1)?'selected':'' }}>Yes</option>
-                                        <option value="0" {{ ($recProductsByID->is_active==0)?'selected':'' }}>No</option>
-                                    </select>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
-                                    <select class="form-control col-4" name="is_hot" required="">
-                                        <option value="">-- choose one of them --</option>
-                                        <option value="1" {{ ($recProductsByID->is_hot==1)?'selected':'' }}>Yes</option>
-                                        <option value="0" {{ ($recProductsByID->is_hot==0)?'selected':'' }}>No</option>
+                                        <option value="1" {{ ($recVendorsByID->is_active==1)?'selected':'' }}>Yes</option>
+                                        <option value="0" {{ ($recVendorsByID->is_active==0)?'selected':'' }}>No</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
                                 <div class="form-group">
-                                    <label>Product Title EN</label>
-                                    <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your product Title" value="{{ $recProductsByID->product_title_en }}" minlength="3" maxlength="100">
-                                    <span id="char-product_title_en">100</span> Character(s) Remaining
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Product Brief EN</label>
-                                    <textarea name="product_brief_en" id="product_brief_en" class="form-control" maxlength="140">{{ $recProductsByID->product_brief_en }}</textarea>
-                                    <span id="char-product_brief_en">140</span> Character(s) Remaining
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Product Description EN</label>
-                                    <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ $recProductsByID->product_desc_en }}</textarea>
+                                    <label>Description</label>
+                                    <textarea name="description" class="form-control summernote">{!! $recVendorsByID->description !!}</textarea>
+                                    <small>If you have notes for this vendor.</small>
                                 </div>
                             </div>
-                        
+
                             <div class="tab-pane fade p-3" id="seo" role="tabpanel" aria-labelledby="tab-seo">
                                 <div class="form-group">
                                     <label>SEO Title</label>
-                                    <input type="text" name="seo_title" id="seo_title" class="form-control" placeholder="SEO Title" value="{{ $recProductsByID->seo_title }}" maxlength="250">
+                                    <input type="text" name="seo_title" id="seo_title" class="form-control" placeholder="SEO Title" value="{{ $recVendorsByID->seo_title }}" maxlength="250">
                                 </div>
 
                                 <div class="form-group">
                                     <label>SEO Keyword</label>
-                                    <input type="text" name="seo_keyword" id="seo_keyword" class="form-control" placeholder="SEO Keyword" value="{{ $recProductsByID->seo_keyword }}" maxlength="250">
+                                    <input type="text" name="seo_keyword" id="seo_keyword" class="form-control" placeholder="SEO Keyword" value="{{ $recVendorsByID->seo_keyword }}" maxlength="250">
                                 </div>
 
                                 <div class="form-group">
                                     <label>SEO Description</label>
-                                    <textarea name="seo_description" id="seo_description" class="form-control" maxlength="250">{{ $recProductsByID->seo_description }}</textarea>
+                                    <textarea name="seo_description" id="seo_description" class="form-control" maxlength="250">{{ $recVendorsByID->seo_description }}</textarea>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <div class="kt-portlet__foot">
@@ -239,100 +219,77 @@
 @section('js')
 
 <script language="javascript" type="text/javascript">
-$(function(){
-    $("#product_title_id").keyup(function(){
-        var Text = $(this).val();
-        Text = Text.toLowerCase();
-        Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
-        $("#slug").val(Text);        
-    });
-});
-</script>
-
-<script language="javascript" type="text/javascript">
-$(function(){
-    var maxLength = 100;
-    $('#product_title_id').keyup(function() {
-      var textlen = maxLength - $(this).val().length;
-      $('#char-product_title_id').text(textlen);
-    });
-});
-
-$(function(){
-    var maxLength = 100;
-    $('#product_title_en').keyup(function() {
-      var textlen = maxLength - $(this).val().length;
-      $('#char-product_title_en').text(textlen);
-    });
-});
-
-$(function(){
-    var maxLength = 140;
-    $('#product_brief_en').keyup(function() {
-      var textlen = maxLength - $(this).val().length;
-      $('#char-product_brief_en').text(textlen);
-    });
-});
-
-$(function(){
-    var maxLength = 140;
-    $('#product_brief_id').keyup(function() {
-      var textlen = maxLength - $(this).val().length;
-      $('#char-product_brief_id').text(textlen);
-    });
-});
-</script>
-
-<script type="text/javascript" src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
-
-<script type="text/javascript">
     $(function(){
-        // numeral
-        var cleaveNumeral = new Cleave('.input-numeral', {
-            numeral: true,
-            numeralThousandsGroupStyle: 'thousand',
-            numeralIntegerScale: 15,
-            numeralDecimalMark: ',',
-            delimiter: '.'
+        $("#name").keyup(function(){
+            var Text = $(this).val();
+            Text = Text.toLowerCase();
+            Text = Text.replace(/[^a-zA-Z0-9]+/g,'-');
+            $("#slug").val(Text);        
         });
     });
-</script>
-
-<script type="text/javascript">
+    </script>
+    
+    <script language="javascript" type="text/javascript">
     $(function(){
-        // numeral
-        var cleaveNumeralTax = new Cleave('.tax', {
-            numeral: true,
-            numeralThousandsGroupStyle: 'thousand',
-            numeralIntegerScale: 2,
-            numeralDecimalMark: ',',
-            delimiter: '.'
+        var maxLength = 100;
+        $('#name').keyup(function() {
+          var textlen = maxLength - $(this).val().length;
+          $('#char-name').text(textlen);
         });
     });
-</script>
-
-<script type="text/javascript">
-$(document).ready(function() {
     
-    // enable fileuploader plugin
-    $('input.file-uploads').fileuploader({
-        limit: 1,
-        fileMaxSize: 5,
-        extensions: ["jpg", "jpeg", "pdf", "png"],
-        disallowedExtensions: ["text/plain", "audio/*", "php", "php3", "php4", "php5"]
+    $(function(){
+        var maxLength = 100;
+        $('#product_title_en').keyup(function() {
+          var textlen = maxLength - $(this).val().length;
+          $('#char-product_title_en').text(textlen);
+        });
     });
     
-});
-</script>
-
-<script type="text/javascript">
-    $(document).on('click','.delete-file-link',function(){
-        if(confirm('Are you sure ?')) {
-            var link = $(this).attr('data-link');
-            window.location.assign(link);
-        }
+    $(function(){
+        var maxLength = 140;
+        $('#product_brief_en').keyup(function() {
+          var textlen = maxLength - $(this).val().length;
+          $('#char-product_brief_en').text(textlen);
+        });
     });
-</script>
+    
+    $(function(){
+        var maxLength = 140;
+        $('#product_brief_id').keyup(function() {
+          var textlen = maxLength - $(this).val().length;
+          $('#char-product_brief_id').text(textlen);
+        });
+    });
+    </script>
+    
+    <script type="text/javascript" src="https://nosir.github.io/cleave.js/dist/cleave.min.js"></script>
+    
+    <script type="text/javascript">
+        $(function(){
+            // numeral
+            var cleaveNumeral = new Cleave('.input-numeral', {
+                numeral: true,
+                numeralThousandsGroupStyle: 'thousand',
+                numeralIntegerScale: 15,
+                numeralDecimalMark: ',',
+                delimiter: '.'
+            });
+        });
+    </script>
+    
+    <script type="text/javascript">
+        $(function(){
+            // numeral
+            var cleaveNumeralTax = new Cleave('.tax', {
+                numeral: true,
+                numeralThousandsGroupStyle: 'thousand',
+                numeralIntegerScale: 2,
+                numeralDecimalMark: ',',
+                delimiter: '.'
+            });
+        });
+    </script>
 
 @endsection
 
