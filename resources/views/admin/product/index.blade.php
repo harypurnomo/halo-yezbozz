@@ -53,7 +53,7 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
                     <thead>
                         <tr>
-                            <th>Product</th>
+                            <th>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
                             <th>Category</th>
                             <th>Desc ID</th>
                             <th>Last Updated</th>

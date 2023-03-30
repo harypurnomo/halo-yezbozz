@@ -73,30 +73,22 @@
                                     <small>Automatically</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Title ID <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="product_title_id" id="product_title_id" class="form-control" placeholder="Your Product Title" value="{{ old('product_title_id') }}" required="" minlength="3" maxlength="100">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title ID <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="product_title_id" id="product_title_id" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title" value="{{ old('product_title_id') }}" required="" minlength="3" maxlength="100">
                                     <span id="char-product_title_id">100</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Brief ID</label>
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Brief ID</label>
                                     <textarea name="product_brief_id" id="product_brief_id" class="form-control" maxlength="140">{{ old('product_brief_id') }}</textarea>
                                     <span id="char-product_brief_id">140</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Description ID</label>
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description ID</label>
                                     <textarea name="product_desc_id" id="product_desc_id" class="form-control summernote">{{ old('product_desc_id') }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Price </label>
-                                    <input type="text" name="price" class="form-control input-numeral" placeholder="Your Product Price" value="{{ old('price') }}">
-                                </div>
-                                <div class="form-group">
-                                    <label>Tax </label>
-                                    <input type="text" name="tax" class="form-control tax" placeholder="Your Product Tax" value="{{ old('tax') }}">
-                                </div>
-                                <div class="form-group">
-                                    <label>External Link</label>
-                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ old('product_title_en') }}">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ old('product_title_en') }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Banner</label>
@@ -143,14 +135,14 @@
         
                                 <div class="form-group">
                                     <label>File Attachement</label>
-                                    <input type="file" name="files" class="form-control">
+                                    <input type="file" name="files" class="form-control file-uploads">
                                 </div>
         
                                 <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="1">Yes</option>
+                                        <option value="1" selected>Yes</option>
                                         <option value="0">No</option>
                                     </select>
                                 </div>
@@ -160,24 +152,32 @@
                                     <select class="form-control col-4" name="is_hot" required="">
                                         <option value="">-- choose one of them --</option>
                                         <option value="1">Yes</option>
-                                        <option value="0">No</option>
+                                        <option value="0" selected>No</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
                                 <div class="form-group">
-                                    <label>Product Title EN</label>
-                                    <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your Product Title" value="{{ old('product_title_en') }}" minlength="3" maxlength="100">
+                                    <label>Price </label>
+                                    <input type="text" name="price" class="form-control input-numeral" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Tax </label>
+                                    <input type="text" name="tax" class="form-control tax" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Tax" value="{{ old('tax') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title EN</label>
+                                    <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title" value="{{ old('product_title_en') }}" minlength="3" maxlength="100">
                                     <span id="char-product_title_en">100</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Brief EN</label>
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Brief EN</label>
                                     <textarea name="product_brief_en" id="product_brief_en" class="form-control" maxlength="140">{{ old('product_brief_en') }}</textarea>
                                     <span id="char-product_brief_en">140</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
-                                    <label>Product Description EN</label>
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description EN</label>
                                     <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ old('product_desc_en') }}</textarea>
                                 </div>
                             </div>
@@ -289,6 +289,20 @@ $(function(){
         });
     });
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        // enable fileuploader plugin
+        $('input.file-uploads').fileuploader({
+            limit: 1,
+            fileMaxSize: 5,
+            extensions: ["jpg", "jpeg", "pdf", "png"],
+            disallowedExtensions: ["text/plain", "audio/*", "php", "php3", "php4", "php5"]
+        });
+        
+    });
+    </script>
 
 @endsection
 
