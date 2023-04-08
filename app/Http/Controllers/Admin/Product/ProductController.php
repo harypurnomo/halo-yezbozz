@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Library\Library;
 use App\Products;
 use App\ProductsCategory;
+use App\VendorProductsPrice;
+use App\Vendors;
 use Validator;
 use Auth;
 use Str;
@@ -31,7 +33,9 @@ class ProductController extends Controller
         // Validate Access
         Library::validateAccess('create',$this->moduleLink);
 
-        return view('admin.product.create')->with('recProductsCategory',ProductsCategory::where('is_active',1)->get());
+        return view('admin.product.create')
+                ->with('recProductsCategory',ProductsCategory::where('is_active',1)->get())
+                ->with('recVendors',Vendors::where('is_active',1)->get());
     }
 
     public function store(Request $request)
@@ -39,9 +43,10 @@ class ProductController extends Controller
         // dd($request->all());
 
         // convert string to double
-        $price = str_replace(".", "", $request['price']);
-        $tax = str_replace(".", "", $request['tax']);
-
+        $qty = $request['vendor_qty'];
+        $price = str_replace(".", "", $request['vendor_price']);
+        $tax = str_replace(".", "", $request['vendor_tax']);
+       
         $rules=[
             'slug'=>'required',
             'product_title_id'=>'required|min:3|max:100',
@@ -66,8 +71,6 @@ class ProductController extends Controller
         $rec->seo_title = trim($request->input('seo_title'));
         $rec->seo_keyword = trim($request->input('seo_keyword'));
         $rec->seo_description = trim($request->input('seo_description'));
-        $rec->price = doubleval(str_replace(",",".",$price));
-        $rec->tax = doubleval(str_replace(",",".",$tax));
         $rec->external_link = trim($request->input('external_link'));
         $rec->created_by = $request->input('created_by');
         
@@ -107,6 +110,32 @@ class ProductController extends Controller
 
         $rec->save();
 
+
+        //Rumus menghitung harga dasar dan menyimpan di table vendor_products_price
+        if(!empty($price)){
+            if(!empty($tax)){
+                $isTax = $tax/100;
+                $isTaxInPrice = $price*$isTax;
+                $isPriceAfterTax = $price + $isTaxInPrice;
+                $final_price = $isPriceAfterTax/$qty;
+            }
+            else{
+                $final_price = $price/$qty;
+            }
+    
+            $recVendorProductsPrice = new VendorProductsPrice;
+            $recVendorProductsPrice->product_id = $rec->id;
+            $recVendorProductsPrice->vendor_id = $request->input('vendor_id');
+            $recVendorProductsPrice->note =  trim($request->input('vendor_note'));
+            $recVendorProductsPrice->external_link =  trim($request->input('vendor_external_link'));
+            $recVendorProductsPrice->qty = $qty;
+            $recVendorProductsPrice->price = doubleval(str_replace(",",".",$price));
+            $recVendorProductsPrice->tax = doubleval(str_replace(",",".",$tax));
+            $recVendorProductsPrice->final_price = $final_price; //$doubleval(str_replace(",",".",$final_price));
+            $recVendorProductsPrice->created_by = $request->input('created_by');
+            $recVendorProductsPrice->save();
+        }
+        
         return redirect(route('master-product.index'))->with('success-update','Your work has been saved!');
     }
 
@@ -205,6 +234,9 @@ class ProductController extends Controller
         {
             $rec = Products::find($id);
             $rec->delete();
+
+            $recVendorProductsPrice = VendorProductsPrice::where('product_id',$id);
+            $recVendorProductsPrice->delete();
 
             return response()->json(['status'=>1,'msg'=>'Your work has been saved!'], 200);
         } 

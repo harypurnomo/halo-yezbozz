@@ -62,7 +62,10 @@
                                 <a class="nav-link" id="tab-optional" data-toggle="tab" href="#optional" role="tab" aria-controls="Two" aria-selected="false">Optional</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-seo" data-toggle="tab" href="#seo" role="tab" aria-controls="Three" aria-selected="false">SEO</a>
+                                <a class="nav-link" id="tab-vendor" data-toggle="tab" href="#vendor" role="tab" aria-controls="Three" aria-selected="false">Vendor Relationship</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-seo" data-toggle="tab" href="#seo" role="tab" aria-controls="four" aria-selected="false">SEO</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
@@ -72,24 +75,29 @@
                                     <input type="text" name="slug" id="slug" class="form-control" placeholder="Slug" value="{{ old('slug') }}" readonly="">
                                     <small>Automatically</small>
                                 </div>
+
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title ID <span class="kt-font-danger">*</span></label>
                                     <input type="text" name="product_title_id" id="product_title_id" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title" value="{{ old('product_title_id') }}" required="" minlength="3" maxlength="100">
                                     <span id="char-product_title_id">100</span> Character(s) Remaining
                                 </div>
+
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Brief ID</label>
                                     <textarea name="product_brief_id" id="product_brief_id" class="form-control" maxlength="140">{{ old('product_brief_id') }}</textarea>
                                     <span id="char-product_brief_id">140</span> Character(s) Remaining
                                 </div>
+
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description ID</label>
                                     <textarea name="product_desc_id" id="product_desc_id" class="form-control summernote">{{ old('product_desc_id') }}</textarea>
                                 </div>
+
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
                                     <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ old('product_title_en') }}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Banner</label>
                                     <div class="col-4">
@@ -106,6 +114,7 @@
                                     </div>
                                     <small>The best size 641 x 401</small>
                                 </div>
+
                                 <div class="form-group">
                                     <label>Thumbnail</label>
                                     <div class="col-4">
@@ -122,20 +131,20 @@
                                     </div>
                                     <small>The best size 415 x 275</small>
                                 </div>
-        
+
+                                <div class="form-group">
+                                    <label>File Attachement</label>
+                                    <input type="file" name="files" class="form-control file-uploads">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="product_category_id">Product Category <span class="kt-font-danger">*</span></label>
-                                    <select class="form-control col-4" name="product_category_id" required="">
+                                    <select class="form-control" name="product_category_id" required="">
                                         <option value="">-- choose one of them --</option>
                                         @foreach ($recProductsCategory as $item)
                                             <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label>File Attachement</label>
-                                    <input type="file" name="files" class="form-control file-uploads">
                                 </div>
         
                                 <div class="form-group">
@@ -146,7 +155,27 @@
                                         <option value="0">No</option>
                                     </select>
                                 </div>
-        
+                            </div>
+
+                            <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
+                                <h4>Dual language</h4>
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title EN</label>
+                                    <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title" value="{{ old('product_title_en') }}" minlength="3" maxlength="100">
+                                    <span id="char-product_title_en">100</span> Character(s) Remaining
+                                </div>
+
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Brief EN</label>
+                                    <textarea name="product_brief_en" id="product_brief_en" class="form-control" maxlength="140">{{ old('product_brief_en') }}</textarea>
+                                    <span id="char-product_brief_en">140</span> Character(s) Remaining
+                                </div>
+
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description EN</label>
+                                    <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ old('product_desc_en') }}</textarea>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_hot" required="">
@@ -157,28 +186,42 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
+                            <div class="tab-pane fade p-3" id="vendor" role="tabpanel" aria-labelledby="tab-optional">
+                                <h4>Vendor Relationship</h4>
+                                <div class="form-group">
+                                    <label for="vendor_id">First Vendor</label>
+                                    <select class="form-control col-4" name="vendor_id">
+                                        <option value="">-- choose one of them --</option>
+                                        @foreach ($recVendors as $key=>$value)
+                                        <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Note</label>
+                                    <input type="text" name="vendor_note" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Note" value="{{ old('product_title_en') }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>External Link</label>
+                                    <input type="text" name="vendor_external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ old('product_title_en') }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Qty </label>
+                                    <input type="number" name="vendor_qty" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Qty" value="{{ old('price') }}">
+                                    <small>Default bernilai 1 | Jika produk yang dijual vendor dalam paket 1 CTN = 12 pcs, isi field ini dengan 12, dst.</small>
+                                </div>
+
                                 <div class="form-group">
                                     <label>Price </label>
-                                    <input type="text" name="price" class="form-control input-numeral" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
+                                    <input type="text" name="vendor_price" class="form-control input-numeral" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Tax </label>
-                                    <input type="text" name="tax" class="form-control tax" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Tax" value="{{ old('tax') }}">
-                                </div>
-                                <div class="form-group">
-                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title EN</label>
-                                    <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title" value="{{ old('product_title_en') }}" minlength="3" maxlength="100">
-                                    <span id="char-product_title_en">100</span> Character(s) Remaining
-                                </div>
-                                <div class="form-group">
-                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Brief EN</label>
-                                    <textarea name="product_brief_en" id="product_brief_en" class="form-control" maxlength="140">{{ old('product_brief_en') }}</textarea>
-                                    <span id="char-product_brief_en">140</span> Character(s) Remaining
-                                </div>
-                                <div class="form-group">
-                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description EN</label>
-                                    <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ old('product_desc_en') }}</textarea>
+                                    <label>Tax (in percent %)</label>
+                                    <input type="text" name="vendor_tax" class="form-control tax" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Tax" value="{{ old('tax') }}">
                                 </div>
                             </div>
 

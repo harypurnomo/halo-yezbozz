@@ -54,24 +54,26 @@
                     <thead>
                         <tr>
                             <th>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
-                            <th>Category</th>
+                            {{-- <th>Category</th> --}}
                             <th>Desc ID</th>
+                            <th>Updated By</th>
                             <th>Last Updated</th>
-                            {{-- <th>Active</th>
-                            <th></th> --}}
+                            {{-- <th>Active</th> --}}
+                            {{-- <th></th> --}}
                         </tr>
                     </thead>                   
                     <tbody>
                         @foreach ($recProducts as $index => $row)
                         <tr>
                             <td><a href="{{ route('master-product.edit',['id'=>$row->id]) }}">{{ strtoupper($row->product_title_id) }}</a></td>
-                            <td>{{ $row->category_name }}</td>
+                            {{-- <td>{{ $row->category_name }}</td> --}}
                             <td>{!! $row->product_desc_id !!}</td>
+                            <td>{{ $row->user_name }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             {{-- <td>
                                 {!! ($row->is_active=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
-                            </td>
-                            <td>
+                            </td> --}}
+                            {{-- <td>
                                 <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-product">
                                     <i class="flaticon2-trash"></i> Remove
                                 </span>

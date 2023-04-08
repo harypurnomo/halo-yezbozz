@@ -90,10 +90,12 @@
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description ID</label>
                                     <textarea name="product_desc_id" id="product_desc_id" class="form-control summernote">{{ $recProductsByID->product_desc_id }}</textarea>
                                 </div>
+
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
                                     <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ $recProductsByID->external_link }}">
                                 </div>
+
                                 <div class="form-group">
                                     <label>Banner</label>
                                     <div class="col-4">
@@ -114,6 +116,7 @@
                                     </div>
                                     <small>The best size 641 x 401</small>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label>Thumbnail</label>
                                     <div class="col-4">
@@ -148,7 +151,7 @@
         
                                 <div class="form-group">
                                     <label for="product_category_id">Product Category <span class="kt-font-danger">*</span></label>
-                                    <select class="form-control col-4" name="product_category_id" required="">
+                                    <select class="form-control" name="product_category_id" required="">
                                         <option value="">-- choose one of them --</option>
                                         @foreach ($recProductsCategory as $item)
                                             <option value="{{ $item->id }}" {{ ($recProductsByID->product_category_id==$item->id)?'selected':'' }}>{{ $item->name }}</option>
@@ -162,15 +165,6 @@
                                         <option value="">-- choose one of them --</option>
                                         <option value="1" {{ ($recProductsByID->is_active==1)?'selected':'' }}>Yes</option>
                                         <option value="0" {{ ($recProductsByID->is_active==0)?'selected':'' }}>No</option>
-                                    </select>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
-                                    <select class="form-control col-4" name="is_hot" required="">
-                                        <option value="">-- choose one of them --</option>
-                                        <option value="1" {{ ($recProductsByID->is_hot==1)?'selected':'' }}>Yes</option>
-                                        <option value="0" {{ ($recProductsByID->is_hot==0)?'selected':'' }}>No</option>
                                     </select>
                                 </div>
                             </div>
@@ -201,6 +195,15 @@
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description EN</label>
                                     <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ $recProductsByID->product_desc_en }}</textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="is_hot" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="1" {{ ($recProductsByID->is_hot==1)?'selected':'' }}>Yes</option>
+                                        <option value="0" {{ ($recProductsByID->is_hot==0)?'selected':'' }}>No</option>
+                                    </select>
                                 </div>
                             </div>
                         
