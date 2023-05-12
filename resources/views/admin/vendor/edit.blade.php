@@ -181,6 +181,20 @@
                                     <textarea name="description" class="form-control summernote">{!! $recVendorsByID->description !!}</textarea>
                                     <small>If you have notes for this vendor.</small>
                                 </div>
+                                <h4>Contact Persons</h4>
+                                <div class="form-group">
+                                    <label>Name </label>
+                                    <input type="text" name="name" id="name_cp" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Name" value="{{ $recVendorsByID->name }}" required="" minlength="3" maxlength="100">
+                                    <span id="char-name">100</span> Character(s) Remaining
+                                </div>
+                                <div class="form-group">
+                                    <label>Email </label>
+                                    <input type="email" name="email_cp" class="form-control " placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Email" value="{{ $recVendorsByID->email }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone Number </label>
+                                    <input type="number" class="form-control" name="phone_cp" value="{{ $recVendorsByID->phone }}" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Phone Number" minlength="8" maxlength="30">
+                                </div>
                             </div>
 
                             <div class="tab-pane fade p-3" id="seo" role="tabpanel" aria-labelledby="tab-seo">

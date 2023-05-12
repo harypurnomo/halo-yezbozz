@@ -112,6 +112,8 @@ class ProductController extends Controller
 
 
         //Rumus menghitung harga dasar dan menyimpan di table vendor_products_price
+        // dd($request->all());
+
         if(!empty($price)){
             if(!empty($tax)){
                 $isTax = $tax/100;
@@ -122,6 +124,8 @@ class ProductController extends Controller
             else{
                 $final_price = $price/$qty;
             }
+
+            // dd($final_price);
     
             $recVendorProductsPrice = new VendorProductsPrice;
             $recVendorProductsPrice->product_id = $rec->id;

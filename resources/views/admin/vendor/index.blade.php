@@ -56,6 +56,7 @@
                             <th>Name of {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
                             <th>Category</th>
                             <th>Location</th>
+                            <th>Contact Person</th>
                             <th>External Links</th>
                             <th>Last Updated</th>
                             <th></th>
@@ -66,6 +67,7 @@
                         <tr>
                             <td><a href="{{ route('master-vendor.edit',['id'=>$row->id]) }}">{{ strtoupper($row->name) }}</a></td>
                             <td>{{ $row->is_category }}</td>
+                            <td>{{ $row->is_location }}</td>
                             <td>{{ $row->is_location }}</td>
                             <td>{{ $row->external_link }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>

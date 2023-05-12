@@ -209,14 +209,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Qty </label>
-                                    <input type="number" name="vendor_qty" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Qty" value="{{ old('price') }}">
+                                    <label>Qty <span class="kt-font-danger">*</span></label>
+                                    <input type="number" name="vendor_qty" class="form-control" required placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Qty" value="{{ old('price') }}">
                                     <small>Default bernilai 1 | Jika produk yang dijual vendor dalam paket 1 CTN = 12 pcs, isi field ini dengan 12, dst.</small>
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Price </label>
-                                    <input type="text" name="vendor_price" class="form-control input-numeral" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
+                                    <label>Price <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="vendor_price" class="form-control input-numeral" required placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
                                 </div>
 
                                 <div class="form-group">
