@@ -162,8 +162,14 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::resource('master-product', 'Admin\Product\ProductController');
     Route::get('master-product-delete/{id}', 'Admin\Product\ProductController@deleteFile')->name('master.product.delete');
     Route::resource('master-category-of-product', 'Admin\ProductCategory\ProductCategoryController');
+
+    //Vendor
     Route::resource('master-vendor', 'Admin\Vendor\VendorController');
     Route::get('master-vendor-delete/{id}', 'Admin\Vendor\VendorController@deleteFile')->name('master.vendor.delete');
+    Route::resource('master-vendor-order', 'Admin\Vendor\VendorOrderController');
+    Route::get('master-vendor-order-delete/{id}', 'Admin\Vendor\VendorOrderController@deleteFile')->name('master.vendor.order.delete');
+    Route::resource('master-vendor-contact', 'Admin\Vendor\VendorContactPersonController');
+
 
     //Transaction
     Route::resource('master-transaction', 'Admin\Transaction\TransactionController');

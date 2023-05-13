@@ -37,16 +37,14 @@ class Vendors extends Model
         return $strQuery;
     }
 
-    // public static function getAllIsActive(){
-    //     $strQuery = DB::table('products As a')
-    //                 ->join('users As b','a.created_by','=','b.id')
-    //                 ->join('products_category As c','a.product_category_id','=','c.id')
-    //                 ->where('a.is_active',1)
-    //                 ->orderBy('a.updated_at','desc')
-    //                 ->select('a.*','b.name as user_name','c.name as category_name');
+    public static function getAllIsActive(){
+        $strQuery = DB::table('vendors As a')
+                    ->where('a.is_active',1)
+                    ->orderBy('a.updated_at','desc')
+                    ->select('a.*');
 
-    //     return $strQuery;
-    // }
+        return $strQuery;
+    }
 
    
 }

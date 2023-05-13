@@ -65,6 +65,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="tab-seo" data-toggle="tab" href="#seo" role="tab" aria-controls="Three" aria-selected="false">SEO</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-history" data-toggle="tab" href="#history" role="tab" aria-controls="Three" aria-selected="false">Orders History</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-contact" data-toggle="tab" href="#contact" role="tab" aria-controls="Three" aria-selected="false">Contact Person</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active p-3" id="general" role="tabpanel" aria-labelledby="tab-general">
@@ -91,10 +97,6 @@
                                     <textarea name="address" class="form-control summernote">{!! $recVendorsByID->address !!}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Locations With Coordinate </label>
-                                    <input type="text" name="coordinate" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Locations With Coordinate" value="{{ $recVendorsByID->coordinate }}">
-                                </div>
-                                <div class="form-group">
                                     <label for="is_active">Vendor Category <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_category" required="">
                                         <option value="">-- choose one of them --</option>
@@ -111,10 +113,6 @@
                                         <option value="offline store" {{ ($recVendorsByID->is_location=="offline store")?'selected':'' }}>Offline Store</option>
                                         <option value="online offline store" {{ ($recVendorsByID->is_location=="online offline store")?'selected':'' }}>Online & Offline Store</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>External Link</label>
-                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ $recVendorsByID->external_link }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Banner</label>
@@ -157,16 +155,6 @@
                                     <small>The best size 415 x 275</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>File Attachement</label><br>
-                                    @if($recVendorsByID->file_attachement=='')
-                                    <a href="javascript:;">Not Available</a>
-                                    @else
-                                    <a href="{{ url('uploads/vendor/file_attachement') }}/{{ $recVendorsByID->file_attachement }}" target="_blank">{{ $recVendorsByID->file_attachement }}</a>
-                                     <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.vendor.delete',['id'=>$recVendorsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
-                                    @endif
-                                    <input type="file" name="files" class="form-control file-uploads">
-                                </div>
-                                <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
                                         <option value="1" {{ ($recVendorsByID->is_active==1)?'selected':'' }}>Yes</option>
@@ -177,23 +165,27 @@
 
                             <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
                                 <div class="form-group">
+                                    <label>External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ $recVendorsByID->external_link }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Locations With Coordinate </label>
+                                    <input type="text" name="coordinate" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Locations With Coordinate" value="{{ $recVendorsByID->coordinate }}">
+                                </div>
+                                <div class="form-group">
                                     <label>Description</label>
                                     <textarea name="description" class="form-control summernote">{!! $recVendorsByID->description !!}</textarea>
                                     <small>If you have notes for this vendor.</small>
                                 </div>
-                                <h4>Contact Persons</h4>
                                 <div class="form-group">
-                                    <label>Name </label>
-                                    <input type="text" name="name" id="name_cp" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Name" value="{{ $recVendorsByID->name }}" required="" minlength="3" maxlength="100">
-                                    <span id="char-name">100</span> Character(s) Remaining
-                                </div>
-                                <div class="form-group">
-                                    <label>Email </label>
-                                    <input type="email" name="email_cp" class="form-control " placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Email" value="{{ $recVendorsByID->email }}">
-                                </div>
-                                <div class="form-group">
-                                    <label>Phone Number </label>
-                                    <input type="number" class="form-control" name="phone_cp" value="{{ $recVendorsByID->phone }}" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Phone Number" minlength="8" maxlength="30">
+                                    <label>File Attachement</label><br>
+                                    @if($recVendorsByID->file_attachement=='')
+                                    <a href="javascript:;">Not Available</a>
+                                    @else
+                                    <a href="{{ url('uploads/vendor/file_attachement') }}/{{ $recVendorsByID->file_attachement }}" target="_blank">{{ $recVendorsByID->file_attachement }}</a>
+                                    <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.vendor.delete',['id'=>$recVendorsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
+                                    @endif
+                                    <input type="file" name="files" class="form-control file-uploads">
                                 </div>
                             </div>
 
@@ -212,6 +204,66 @@
                                     <label>SEO Description</label>
                                     <textarea name="seo_description" id="seo_description" class="form-control" maxlength="250">{{ $recVendorsByID->seo_description }}</textarea>
                                 </div>
+                            </div>
+
+                            <div class="tab-pane fade p-3" id="history" role="tabpanel" aria-labelledby="tab-history">
+                                <a href="{{ route('master-vendor-order.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+                                    <i class="la la-plus"></i> Upload your files
+                                </a>
+                                <br><br>
+                                <!--begin: Datatable -->
+                                <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Files</th>
+                                            <th>Last Updated</th>
+                                        </tr>
+                                    </thead>                   
+                                    <tbody>
+                                        @foreach ($recVendorsOrderHistoryByVendorID as $index => $row)
+                                        <tr>
+                                            <td>{{ $row->name }}</td>
+                                            <td><a href="{{ url('uploads/vendor/order') }}/{{ $row->file_attachement }}" target="_blank">{{ $row->file_attachement }}</a></td>
+                                            <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>                    
+                                </table>
+                                <!--end: Datatable -->
+                            </div>
+
+                            <div class="tab-pane fade p-3" id="contact" role="tabpanel" aria-labelledby="tab-contact">
+                                <a href="{{ route('master-vendor-contact.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+                                    <i class="la la-plus"></i> Create new contact
+                                </a>
+                                <br><br>
+                                <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Email</th>
+                                            <th>Phone</th>
+                                            <th>Avatar</th>
+                                            <th>KTP</th>
+                                            <th>Last Updated</th>
+                                        </tr>
+                                    </thead>                   
+                                    <tbody>
+                                        @foreach ($recVendorContactPersonByVendorID as $index => $row)
+                                        <tr>
+                                            <td>{{ strtoupper($row->name) }}</td>
+                                            <td>{{ strtoupper($row->position) }}</td>
+                                            <td>{{ $row->email }}</td>
+                                            <td>{{ $row->phone }}</td>
+                                            <td><a href="{{ url('uploads/vendor/contact/avatar') }}/{{ $row->avatar }}" target="_blank">{{ $row->avatar }}</a></td>
+                                            <td><a href="{{ url('uploads/vendor/contact/ktp') }}/{{ $row->ktp }}" target="_blank">{{ $row->ktp }}</a></td>
+                                            <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>                    
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -232,7 +284,21 @@
 
 @section('js')
 
-<script language="javascript" type="text/javascript">
+    <script type="text/javascript">
+    $(document).ready(function() {
+        
+        // enable fileuploader plugin
+        $('input.file-uploads').fileuploader({
+            limit: 1,
+            fileMaxSize: 5,
+            extensions: ["jpg", "jpeg", "pdf", "png"],
+            disallowedExtensions: ["text/plain", "audio/*", "php", "php3", "php4", "php5"]
+        });
+        
+    });
+    </script>
+
+    <script language="javascript" type="text/javascript">
     $(function(){
         $("#name").keyup(function(){
             var Text = $(this).val();
@@ -303,6 +369,15 @@
                 delimiter: '.'
             });
         });
+    </script>
+
+    <script type="text/javascript">
+    $(document).on('click','.delete-file-link',function(){
+        if(confirm('Are you sure ?')) {
+            var link = $(this).attr('data-link');
+            window.location.assign(link);
+        }
+    });
     </script>
 
 @endsection

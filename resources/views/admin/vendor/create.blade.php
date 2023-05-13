@@ -90,10 +90,6 @@
                                     <textarea name="address" class="form-control summernote">{{ old('address') }}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>Locations With Coordinate </label>
-                                    <input type="text" name="coordinate" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Locations With Coordinate" value="{{ old('coordinate') }}">
-                                </div>
-                                <div class="form-group">
                                     <label for="is_active">Vendor Category <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_category" required="">
                                         <option value="">-- choose one of them --</option>
@@ -110,10 +106,6 @@
                                         <option value="offline store">Offline Store</option>
                                         <option value="online offline store">Online & Offline Store</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>External Link</label>
-                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ old('external_link') }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Banner</label>
@@ -148,10 +140,6 @@
                                     <small>The best size 415 x 275</small>
                                 </div>
                                 <div class="form-group">
-                                    <label>File Attachement</label>
-                                    <input type="file" name="files" class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
                                         <option value="1">Yes</option>
@@ -162,9 +150,21 @@
 
                             <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
                                 <div class="form-group">
+                                    <label>External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ old('external_link') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Locations With Coordinate </label>
+                                    <input type="text" name="coordinate" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Locations With Coordinate" value="{{ old('coordinate') }}">
+                                </div>
+                                <div class="form-group">
                                     <label>Description</label>
                                     <textarea name="description" class="form-control summernote">{{ old('description') }}</textarea>
                                     <small>If you have notes for this vendor.</small>
+                                </div>
+                                <div class="form-group">
+                                    <label>File Attachement</label>
+                                    <input type="file" name="files" class="form-control file-uploads">
                                 </div>
                             </div>
 
@@ -202,6 +202,20 @@
 @endsection
 
 @section('js')
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        // enable fileuploader plugin
+        $('input.file-uploads').fileuploader({
+            limit: 1,
+            fileMaxSize: 5,
+            extensions: ["jpg", "jpeg", "pdf", "png"],
+            disallowedExtensions: ["text/plain", "audio/*", "php", "php3", "php4", "php5"]
+        });
+        
+    });
+</script>
 
 <script language="javascript" type="text/javascript">
 $(function(){

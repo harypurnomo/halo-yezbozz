@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Library\Library;
 use App\Vendors;
+use App\VendorsOrderHistory;
+use App\VendorContactPerson;
 use Validator;
 use Auth;
 use Str;
@@ -110,6 +112,8 @@ class VendorController extends Controller
         Library::validateAccess('update',$this->moduleLink);
 
         return view('admin.vendor.edit')
+        ->with('recVendorContactPersonByVendorID',VendorContactPerson::where('vendor_id',$id)->get())
+        ->with('recVendorsOrderHistoryByVendorID',VendorsOrderHistory::where('vendor_id',$id)->get())
         ->with('recVendorsByID',Vendors::find($id));
     }
 
@@ -208,7 +212,7 @@ class VendorController extends Controller
             $rec->file_attachement = NULL;
             $rec->save();
 
-            return redirect(route('master-product.edit',['id'=>$id]))->with('success-update','Your file has been removed!');
+            return redirect(route('master-vendor.edit',['id'=>$id]))->with('success-update','Your file has been removed!');
         } 
         catch (\Exection $e) 
         {

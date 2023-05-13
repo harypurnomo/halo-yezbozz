@@ -345,7 +345,7 @@ $(function(){
         });
         
     });
-    </script>
+</script>
 
 @endsection
 
