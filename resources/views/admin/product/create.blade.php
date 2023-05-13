@@ -94,11 +94,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
-                                    <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ old('product_title_en') }}">
-                                </div>
-
-                                <div class="form-group">
                                     <label>Banner</label>
                                     <div class="col-4">
                                         <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
@@ -130,11 +125,6 @@
                                         </div>
                                     </div>
                                     <small>The best size 415 x 275</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>File Attachement</label>
-                                    <input type="file" name="files" class="form-control file-uploads">
                                 </div>
 
                                 <div class="form-group">
@@ -175,7 +165,17 @@
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description EN</label>
                                     <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ old('product_desc_en') }}</textarea>
                                 </div>
+                                <h4>Add Ons</h4>
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ old('product_title_en') }}">
+                                </div>
                                 
+                                <div class="form-group">
+                                    <label>File Attachement</label>
+                                    <input type="file" name="files" class="form-control file-uploads">
+                                </div>
+
                                 <div class="form-group">
                                     <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_hot" required="">

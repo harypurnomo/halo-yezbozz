@@ -92,11 +92,6 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
-                                    <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ $recProductsByID->external_link }}">
-                                </div>
-
-                                <div class="form-group">
                                     <label>Banner</label>
                                     <div class="col-4">
                                         <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
@@ -139,17 +134,6 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>File Attachement</label><br>
-                                    @if($recProductsByID->file_attachement=='')
-                                    <a href="javascript:;">Not Available</a>
-                                    @else
-                                    <a href="{{ url('uploads/product/file_attachement') }}/{{ $recProductsByID->file_attachement }}" target="_blank">{{ $recProductsByID->file_attachement }}</a>
-                                     <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.product.delete',['id'=>$recProductsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
-                                    @endif
-                                    <input type="file" name="files" class="form-control file-uploads">
-                                </div>
-        
-                                <div class="form-group">
                                     <label for="product_category_id">Product Category <span class="kt-font-danger">*</span></label>
                                     <select class="form-control" name="product_category_id" required="">
                                         <option value="">-- choose one of them --</option>
@@ -170,16 +154,7 @@
                             </div>
 
                             <div class="tab-pane fade p-3" id="optional" role="tabpanel" aria-labelledby="tab-optional">
-                                <div class="form-group">
-                                    <label>Price </label>
-                                    <input type="text" name="price" class="form-control input-numeral" placeholder="Your Product Price" value="{{ number_format($recProductsByID->price,2,",",".") }}">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>Tax </label>
-                                    <input type="text" name="tax" class="form-control tax" placeholder="Your Product Tax" value="{{ number_format($recProductsByID->tax,2,",",".") }}">
-                                </div>
-
+                                <h4>Dual language</h4>
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title EN</label>
                                     <input type="text" name="product_title_en" id="product_title_en" class="form-control" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Title" value="{{ $recProductsByID->product_title_en }}" minlength="3" maxlength="100">
@@ -196,7 +171,23 @@
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Description EN</label>
                                     <textarea name="product_desc_en" id="product_desc_en" class="form-control summernote">{{ $recProductsByID->product_desc_en }}</textarea>
                                 </div>
+                                <h4>Add Ons</h4>
+                                <div class="form-group">
+                                    <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ $recProductsByID->external_link }}">
+                                </div>
 
+                                <div class="form-group">
+                                    <label>File Attachement</label><br>
+                                    @if($recProductsByID->file_attachement=='')
+                                    <a href="javascript:;">Not Available</a>
+                                    @else
+                                    <a href="{{ url('uploads/product/file_attachement') }}/{{ $recProductsByID->file_attachement }}" target="_blank">{{ $recProductsByID->file_attachement }}</a>
+                                     <a href="javascript:;" style="float: right;" class="delete-file-link" data-link="{{ route('master.product.delete',['id'=>$recProductsByID->id]) }}"><i class="fa fa-trash"></i> Remove file</a>
+                                    @endif
+                                    <input type="file" name="files" class="form-control file-uploads">
+                                </div>
+                                
                                 <div class="form-group">
                                     <label for="is_active">Hot <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_hot" required="">
