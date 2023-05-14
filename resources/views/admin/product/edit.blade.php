@@ -65,6 +65,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="tab-seo" data-toggle="tab" href="#seo" role="tab" aria-controls="Three" aria-selected="false">SEO</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-vendor" data-toggle="tab" href="#vendor" role="tab" aria-controls="Four" aria-selected="false">Vendor</a>
+                            </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active p-3" id="general" role="tabpanel" aria-labelledby="tab-general">
@@ -213,6 +216,37 @@
                                     <label>SEO Description</label>
                                     <textarea name="seo_description" id="seo_description" class="form-control" maxlength="250">{{ $recProductsByID->seo_description }}</textarea>
                                 </div>
+                            </div>
+
+                            <div class="tab-pane fade p-3" id="vendor" role="tabpanel" aria-labelledby="tab-optional">
+                                <a href="{{ route('master-vendor-product-price.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+                                    <i class="la la-plus"></i> Create new contact
+                                </a>
+                                <br><br>
+                                <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
+                                    <thead>
+                                        <tr>
+                                            <th>Note</th>
+                                            <th>External Link</th>
+                                            <th>Price Include Tax</th>
+                                            <th>Recommended</th>
+                                            <th>Vendor Name</th>
+                                            <th>Last Updated</th>
+                                        </tr>
+                                    </thead>                   
+                                    <tbody>
+                                        @foreach ($recVendorProductsPriceByProductID as $index => $row)
+                                        <tr>
+                                            <td><a href="{{ route('master-vendor-product-price.edit',['id'=>$row->id]) }}">{{ strtoupper($row->note) }}</a></td>
+                                            <td>{{ $row->external_link }}</td>
+                                            <td>{{ number_format($row->final_price,0,',','.') }}</td>
+                                            <td>{{ $row->recommended }}</td>
+                                            <td>{{ $row->vendor_name }}</td>
+                                            <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>                    
+                                </table>
                             </div>
 
                         </div>

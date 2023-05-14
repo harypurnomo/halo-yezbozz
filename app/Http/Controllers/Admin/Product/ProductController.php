@@ -119,7 +119,8 @@ class ProductController extends Controller
 
         return view('admin.product.edit')
         ->with('recProductsByID',Products::find($id))
-        ->with('recProductsCategory',ProductsCategory::where('is_active',1)->get());
+        ->with('recProductsCategory',ProductsCategory::where('is_active',1)->get())
+        ->with('recVendorProductsPriceByProductID',VendorProductsPrice::getProductID($id)->get());
     }
 
     public function update($id, Request $request)
