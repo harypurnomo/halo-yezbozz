@@ -18,7 +18,7 @@
 
         <div class="kt-subheader__toolbar">
             <div class="kt-subheader__wrapper">
-                <a href="{{ route('master-vendor-order.index') }}" class="btn kt-subheader__btn-primary">Back To List &nbsp;</a>
+                <a href="{{ route('master-vendor-product-price.index') }}" class="btn kt-subheader__btn-primary">Back To List &nbsp;</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             <div class="kt-portlet__body">
 
                 <!--begin::Form-->
-                <form class="kt-form" action="{{ route('master-vendor-order.store') }}" method="post" enctype="multipart/form-data">
+                <form class="kt-form" action="{{ route('master-vendor-product-price.store') }}" method="post" enctype="multipart/form-data">
                 	{{ csrf_field() }}
                     <input type="hidden" name="created_by" value="{{ Auth::user()->id }}">
                     <div class="kt-portlet__body">
@@ -62,23 +62,57 @@
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active p-3" id="general" role="tabpanel" aria-labelledby="tab-general">
                                 <div class="form-group">
-                                    <label for="vendor_id">Vendor Category <span class="kt-font-danger">*</span></label>
-                                    <select class="form-control col-4" name="vendor_id" required="">
+                                    <label for="product_id">Products <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4 kt-select2-general" name="product_id" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        @foreach ($recProducts as $item)
+                                        <option value="{{ $item->id }}">{{ $item->product_title_id }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="vendor_id">Vendors <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4 kt-select2-general" name="vendor_id" required="">
                                         <option value="">-- choose one of them --</option>
                                         @foreach ($recVendor as $item)
                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                               
                                 <div class="form-group">
-                                    <label>Name <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Name" value="{{ old('name') }}" required="" minlength="3" maxlength="100">
+                                    <label>Note <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="note" id="name" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Note" value="{{ old('note') }}" required="" minlength="3" maxlength="100">
                                     <span id="char-name">100</span> Character(s) Remaining
                                 </div>
                                 <div class="form-group">
-                                    <label>File Attachement</label>
-                                    <input type="file" name="files" class="form-control file-uploads">
+                                    <label>External Link</label>
+                                    <input type="text" name="external_link" class="form-control" placeholder="Your External Link" value="{{ old('external_link') }}">
+                                </div>
+                                                            
+                                <div class="form-group">
+                                    <label>Qty <span class="kt-font-danger">*</span></label>
+                                    <input type="number" name="qty" class="form-control" required placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Qty" value="{{ old('qty') }}">
+                                    <small>Default bernilai 1 | Jika produk yang dijual vendor dalam paket 1 CTN = 12 pcs, isi field ini dengan 12, dst.</small>
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label>Price <span class="kt-font-danger">*</span></label>
+                                    <input type="text" name="price" class="form-control input-numeral" required placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label>Tax (in percent %)</label>
+                                    <input type="text" name="tax" class="form-control tax" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Tax" value="{{ old('tax') }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="recommended">Recommended <span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="recommended" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        @for($i = 1; $i <= 10; $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>    
+                                        @endfor
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -99,20 +133,6 @@
 @endsection
 
 @section('js')
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            
-            // enable fileuploader plugin
-            $('input.file-uploads').fileuploader({
-                limit: 1,
-                fileMaxSize: 5,
-                extensions: ["jpg", "jpeg", "pdf", "png"],
-                disallowedExtensions: ["text/plain", "audio/*", "php", "php3", "php4", "php5"]
-            });
-            
-        });
-    </script>
 
     <script language="javascript" type="text/javascript">
     $(function(){

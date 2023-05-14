@@ -41,12 +41,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {       
         // dd($request->all());
-
+        
         // convert string to double
-        $qty = $request['vendor_qty'];
-        $price = str_replace(".", "", $request['vendor_price']);
-        $tax = str_replace(".", "", $request['vendor_tax']);
-       
+        $price = str_replace(".", "", $request['price']);
+        $tax = str_replace(".", "", $request['tax']);
+        
         $rules=[
             'slug'=>'required',
             'product_title_id'=>'required|min:3|max:100',
@@ -109,36 +108,6 @@ class ProductController extends Controller
         $rec->is_hot = $request->input('is_hot');
 
         $rec->save();
-
-
-        //Rumus menghitung harga dasar dan menyimpan di table vendor_products_price
-        // dd($request->all());
-
-        if(!empty($price)){
-            if(!empty($tax)){
-                $isTax = $tax/100;
-                $isTaxInPrice = $price*$isTax;
-                $isPriceAfterTax = $price + $isTaxInPrice;
-                $final_price = $isPriceAfterTax/$qty;
-            }
-            else{
-                $final_price = $price/$qty;
-            }
-
-            // dd($final_price);
-    
-            $recVendorProductsPrice = new VendorProductsPrice;
-            $recVendorProductsPrice->product_id = $rec->id;
-            $recVendorProductsPrice->vendor_id = $request->input('vendor_id');
-            $recVendorProductsPrice->note =  trim($request->input('vendor_note'));
-            $recVendorProductsPrice->external_link =  trim($request->input('vendor_external_link'));
-            $recVendorProductsPrice->qty = $qty;
-            $recVendorProductsPrice->price = doubleval(str_replace(",",".",$price));
-            $recVendorProductsPrice->tax = doubleval(str_replace(",",".",$tax));
-            $recVendorProductsPrice->final_price = $final_price; //$doubleval(str_replace(",",".",$final_price));
-            $recVendorProductsPrice->created_by = $request->input('created_by');
-            $recVendorProductsPrice->save();
-        }
         
         return redirect(route('master-product.index'))->with('success-update','Your work has been saved!');
     }

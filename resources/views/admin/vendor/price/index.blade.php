@@ -34,7 +34,7 @@
                 <div class="kt-portlet__head-toolbar">
                     <div class="kt-portlet__head-wrapper">
                         <div class="kt-portlet__head-actions">
-                            <a href="{{ route('master-vendor-contact.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
+                            <a href="{{ route('master-vendor-product-price.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
                                 <i class="la la-plus"></i> Create a new
                             </a>
                         </div>	
@@ -53,30 +53,28 @@
                 <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
                     <thead>
                         <tr>
-                            <th>Name of {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
-                            <th>Position</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Avatar</th>
-                            <th>KTP</th>
+                            <th>Product</th>
+                            <th>Note</th>
+                            <th>External Link</th>
+                            <th>Price Include Tax</th>
+                            <th>Recommended</th>
                             <th>Vendor Name</th>
                             <th>Last Updated</th>
                             <th></th>
                         </tr>
                     </thead>                   
                     <tbody>
-                        @foreach ($recVendorContactPerson as $index => $row)
+                        @foreach ($recVendorProductsPrice as $index => $row)
                         <tr>
-                            <td><a href="{{ route('master-vendor-contact.edit',['id'=>$row->id]) }}">{{ strtoupper($row->name) }}</a></td>
-                            <td>{{ strtoupper($row->position) }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->phone }}</td>
-                            <td><a href="{{ url('uploads/vendor/contact/avatar') }}/{{ $row->avatar }}" target="_blank">{{ $row->avatar }}</a></td>
-                            <td><a href="{{ url('uploads/vendor/contact/ktp') }}/{{ $row->ktp }}" target="_blank">{{ $row->ktp }}</a></td>
+                            <td>{{ $row->product_title_id }}</td>
+                            <td><a href="{{ route('master-vendor-product-price.edit',['id'=>$row->id]) }}">{{ strtoupper($row->note) }}</a></td>
+                            <td>{{ $row->external_link }}</td>
+                            <td>{{ number_format($row->final_price,0,',','.') }}</td>
+                            <td>{{ $row->recommended }}</td>
                             <td>{{ $row->vendor_name }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
-                                <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-vendor-contact">
+                                <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-vendor-product-price">
                                     <i class="flaticon2-trash"></i> Remove
                                 </span>
                             </td>

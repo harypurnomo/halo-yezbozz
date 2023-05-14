@@ -139,6 +139,7 @@
 <script src="{{ url('admin/template/js/pages/crud/forms/widgets/bootstrap-datepicker.js') }}" type="text/javascript"></script>
 <script src="{{ url('admin/template/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js') }}" type="text/javascript"></script>
 <script src="{{ url('admin/template/js/pages/crud/forms/widgets/jquery.password-indicator.js') }}" type="text/javascript"></script>
+<script src="{{ url('admin/template/js/pages/crud/forms/widgets/select2.js') }}" type="text/javascript"></script>
 <script src="{{ url('admin/template/plugins/fileuploader/jquery.fileuploader.min.js') }}" type="text/javascript"></script>
 <script src="{{ url('admin/template/js/custom.js') }}?{{ date('YmdHis') }}" type="text/javascript"></script>
 

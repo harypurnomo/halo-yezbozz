@@ -62,9 +62,6 @@
                                 <a class="nav-link" id="tab-optional" data-toggle="tab" href="#optional" role="tab" aria-controls="Two" aria-selected="false">Optional</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-vendor" data-toggle="tab" href="#vendor" role="tab" aria-controls="Three" aria-selected="false">Vendor Relationship</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" id="tab-seo" data-toggle="tab" href="#seo" role="tab" aria-controls="four" aria-selected="false">SEO</a>
                             </li>
                         </ul>
@@ -183,45 +180,6 @@
                                         <option value="1">Yes</option>
                                         <option value="0" selected>No</option>
                                     </select>
-                                </div>
-                            </div>
-
-                            <div class="tab-pane fade p-3" id="vendor" role="tabpanel" aria-labelledby="tab-optional">
-                                <h4>Vendor Relationship</h4>
-                                <div class="form-group">
-                                    <label for="vendor_id">First Vendor</label>
-                                    <select class="form-control col-4" name="vendor_id">
-                                        <option value="">-- choose one of them --</option>
-                                        @foreach ($recVendors as $key=>$value)
-                                        <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Note</label>
-                                    <input type="text" name="vendor_note" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Note" value="{{ old('product_title_en') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>External Link</label>
-                                    <input type="text" name="vendor_external_link" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} External Link" value="{{ old('product_title_en') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Qty <span class="kt-font-danger">*</span></label>
-                                    <input type="number" name="vendor_qty" class="form-control" required placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Qty" value="{{ old('price') }}">
-                                    <small>Default bernilai 1 | Jika produk yang dijual vendor dalam paket 1 CTN = 12 pcs, isi field ini dengan 12, dst.</small>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Price <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="vendor_price" class="form-control input-numeral" required placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Price" value="{{ old('price') }}">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Tax (in percent %)</label>
-                                    <input type="text" name="vendor_tax" class="form-control tax" placeholder="Your {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} Tax" value="{{ old('tax') }}">
                                 </div>
                             </div>
 

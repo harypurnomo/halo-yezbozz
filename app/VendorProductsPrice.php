@@ -16,7 +16,7 @@ class VendorProductsPrice extends Model
      */
     protected $fillable = [
         'id', 'product_id', 'vendor_id', 'note', 'external_link', 
-        'qty', 'price', 'tax', 'final_price', 
+        'qty', 'price', 'tax', 'final_price', 'recommended',
         'created_at', 'created_by', 'updated_at', 'updated_by'
     ];
 
@@ -29,15 +29,15 @@ class VendorProductsPrice extends Model
      */
     public $timestamps = true;
 
-    // public static function getAll(){
-    //     $strQuery = DB::table('products As a')
-    //                 ->join('users As b','a.created_by','=','b.id')
-    //                 ->join('products_category As c','a.product_category_id','=','c.id')
-    //                 ->orderBy('a.product_title_id','asc')
-    //                 ->select('a.*','b.name as user_name','c.name as category_name');
+    public static function getAll(){
+        $strQuery = DB::table('vendor_products_price As a')
+                    ->join('products As b','a.product_id','=','b.id')
+                    ->join('vendors As c','a.vendor_id','=','c.id')
+                    ->orderBy('a.updated_at','desc')
+                    ->select('a.*','b.product_title_id','c.name as vendor_name');
 
-    //     return $strQuery;
-    // }
+        return $strQuery;
+    }
 
     // public static function getAllIsActive(){
     //     $strQuery = DB::table('products As a')

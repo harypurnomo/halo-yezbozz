@@ -169,6 +169,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::resource('master-vendor-order', 'Admin\Vendor\VendorOrderController');
     Route::get('master-vendor-order-delete/{id}', 'Admin\Vendor\VendorOrderController@deleteFile')->name('master.vendor.order.delete');
     Route::resource('master-vendor-contact', 'Admin\Vendor\VendorContactPersonController');
+    Route::resource('master-vendor-product-price', 'Admin\Vendor\VendorProductPriceController');
 
 
     //Transaction
