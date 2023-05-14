@@ -56,7 +56,8 @@
                             <th>Product</th>
                             <th>Note</th>
                             <th>External Link</th>
-                            <th>Price Include Tax</th>
+                            <th>Price</th>
+                            <th>Unit Price Include Tax</th>
                             <th>Recommended</th>
                             <th>Vendor Name</th>
                             <th>Last Updated</th>
@@ -68,7 +69,8 @@
                         <tr>
                             <td>{{ $row->product_title_id }}</td>
                             <td><a href="{{ route('master-vendor-product-price.edit',['id'=>$row->id]) }}">{{ strtoupper($row->note) }}</a></td>
-                            <td>{{ $row->external_link }}</td>
+                            <td><a href="{{ $row->external_link }}" target="_blank">{{ $row->external_link }}</a></td>
+                            <td>{{ number_format($row->price,0,',','.') }}</td>
                             <td>{{ number_format($row->final_price,0,',','.') }}</td>
                             <td>{{ $row->recommended }}</td>
                             <td>{{ $row->vendor_name }}</td>

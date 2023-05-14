@@ -69,7 +69,7 @@
                             <td>{{ $row->is_category }}</td>
                             <td>{{ $row->is_location }}</td>
                             <td>{{ $row->is_location }}</td>
-                            <td>{{ $row->external_link }}</td>
+                            <td><a href="{{ $row->external_link }}" target="_blank">{{ $row->external_link }}</a></td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
                                 <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-vendor">

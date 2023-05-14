@@ -109,7 +109,7 @@
                                     <label for="recommended">Recommended <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="recommended" required="">
                                         <option value="">-- choose one of them --</option>
-                                        @for($i = 1; $i <= 10; $i++)
+                                        @for($i = 1; $i <= 99; $i++)
                                         <option value="{{ $i }}">{{ $i }}</option>    
                                         @endfor
                                     </select>
