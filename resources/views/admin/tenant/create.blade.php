@@ -101,6 +101,27 @@
                                     <label>Address</label>
                                     <textarea name="address" class="form-control" rows="5">{{ old('address') }}</textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Google Maps</label>
+                                    <input type="text" name="google_maps" class="form-control" placeholder="Your Link Maps" value="{{ old('google_maps') }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Coordinate</label>
+                                    <input type="text" name="coordinate" class="form-control" placeholder="Your Coordinate" value="{{ old('coordinate') }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="type">Type of {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}<span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="type" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="Langganan Online">Langganan Online</option>
+                                        <option value="Langganan Offline">Langganan Offline</option>
+                                        <option value="Langganan Online & Offline">Langganan Online & Offline</option>
+                                        <option value="Prospect">Prospect</option>
+                                    </select>
+                                </div>
         
                                 <div class="form-group">
                                     <label>Email</label>
@@ -114,8 +135,9 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>Fax</label>
-                                    <input type="text" name="fax" class="form-control" placeholder="Your Fax" value="{{ old('fax') }}" minlength="8" maxlength="100">
+                                    <label>Whatsapp</label>
+                                    <input type="text" name="whatsapp" class="form-control" placeholder="Your Whatsapp" value="{{ old('whatsapp') }}" minlength="8" maxlength="30">
+                                    <small>Must be at least 8 number long </small>
                                 </div>
         
                                 <div class="form-group">

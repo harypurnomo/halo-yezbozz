@@ -15,7 +15,8 @@ class Tenants extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'tenant_type_id', 'name', 'address', 'phone', 'fax', 'email', 'description', 'picture', 'is_active', 'is_remove', 'created_at', 'updated_at'
+        'id', 'tenant_type_id', 'name', 'address', 'google_maps', 'coordinate',
+        'phone', 'whatsapp', 'type', 'email', 'description', 'picture', 'is_active', 'is_remove', 'created_at', 'updated_at'
     ];
 
     protected $primaryKey = 'id';

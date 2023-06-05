@@ -57,7 +57,7 @@
                             <th>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</th>
                             <th>Category</th>
                             <th>Address</th>
-                            <th>Description</th>
+                            <th>Google Maps</th>
                             <th>Email</th>
                             <th>Last Updated</th>
                             <th>Active</th>
@@ -71,7 +71,7 @@
                             <td><a href="{{ route('master-tenant.edit',['id'=>$row->id]) }}">{{ $row->name }}</a></td>
                             <td>{{ $row->type_name }}</td>
                             <td>{{ $row->address }}</td>
-                            <td>{!! $row->description !!}</td>
+                            <td><a href="{{ $row->google_maps }}" target="_blank">{!! $row->google_maps !!}</a></td>
                             <td>{{ $row->email }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>

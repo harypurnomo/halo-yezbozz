@@ -104,6 +104,27 @@
                                     <label>Address</label>
                                     <textarea name="address" class="form-control" rows="5">{{ $recTenantsByID->address }}</textarea>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Google Maps</label>
+                                    <input type="text" name="google_maps" class="form-control" placeholder="Your Link Maps" value="{{ $recTenantsByID->google_maps }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Coordinate</label>
+                                    <input type="text" name="coordinate" class="form-control" placeholder="Your Coordinate" value="{{ $recTenantsByID->coordinate }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="type">Type of {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}<span class="kt-font-danger">*</span></label>
+                                    <select class="form-control col-4" name="type" required="">
+                                        <option value="">-- choose one of them --</option>
+                                        <option value="Langganan Online" {{ ($recTenantsByID->type=="Langganan Online")?'selected':'' }}>Langganan Online</option>
+                                        <option value="Langganan Offline" {{ ($recTenantsByID->type=="Langganan Offline")?'selected':'' }}>Langganan Offline</option>
+                                        <option value="Langganan Online & Offline" {{ ($recTenantsByID->type=="Langganan Online & Offline")?'selected':'' }}>Langganan Online & Offline</option>
+                                        <option value="Prospect" {{ ($recTenantsByID->type=="Prospect")?'selected':'' }}>Prospect</option>
+                                    </select>
+                                </div>
         
                                 <div class="form-group">
                                     <label>Email</label>
@@ -117,8 +138,9 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>Fax</label>
-                                    <input type="text" name="fax" class="form-control" placeholder="Your Fax" value="{{ $recTenantsByID->fax }}" minlength="8" maxlength="100">
+                                    <label>Whatsapp</label>
+                                    <input type="text" name="whatsapp" class="form-control" placeholder="Your Whatsapp" value="{{ $recTenantsByID->whatsapp }}" minlength="8" maxlength="30">
+                                    <small>Must be at least 8 number long </small>
                                 </div>
         
                                 <div class="form-group">
@@ -129,16 +151,8 @@
                                         <option value="0" {{ ($recTenantsByID->is_active==0)?'selected':'' }}>No</option>
                                     </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-arrow-alt-circle-up"></i> Update</button>&nbsp;
-                                    <button type="reset" class="btn btn-secondary"><i class="fa fa-history"></i> Reset</button>
-                                </div>
-                            </form>
                         </div>
                         <div class="tab-pane fade p-3" id="optional-info" role="tabpanel" aria-labelledby="tab-optional">
-                            <form class="kt-form" action="{{ route('master.tenant.update.optional',['id'=>$recTenantsByID->id]) }}" method="post">
-                                {{ csrf_field() }}
                                 <div class="form-group row">
                                     <div class="col-md-6">
                                         <label>Instagram Link</label>
@@ -165,12 +179,12 @@
                                         <textarea name="description" id="article_desc_en" class="form-control summernote">{{ $recTenantsByID->description }}</textarea>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-arrow-alt-circle-up"></i> Update</button>&nbsp;
-                                    <button type="reset" class="btn btn-secondary"><i class="fa fa-history"></i> Reset</button>
-                                </div>
-                            </form>
                         </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success"><i class="fa fa-arrow-alt-circle-up"></i> Update</button>&nbsp;
+                            <button type="reset" class="btn btn-secondary"><i class="fa fa-history"></i> Reset</button>
+                        </div>
+                    </form>
                     </div>
                 </div>
                 <div class="kt-portlet__foot">

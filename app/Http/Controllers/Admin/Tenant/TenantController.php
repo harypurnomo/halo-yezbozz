@@ -55,9 +55,12 @@ class TenantController extends Controller
         $rec->name = trim($request->input('name')); 
         $rec->tenant_type_id = trim($request->input('tenant_type_id')); 
         $rec->address = trim($request->input('address')); 
+        $rec->google_maps = trim($request->input('google_maps')); 
+        $rec->coordinate = trim($request->input('coordinate')); 
+        $rec->type = trim($request->input('type')); 
         $rec->email = trim($request->input('email')); 
         $rec->phone = trim($request->input('phone')); 
-        $rec->fax = trim($request->input('fax')); 
+        $rec->whatsapp = trim($request->input('whatsapp')); 
         $rec->instagram = trim($request->input('instagram'));
         $rec->facebook = trim($request->input('facebook'));
         $rec->youtube = trim($request->input('youtube'));
@@ -111,9 +114,17 @@ class TenantController extends Controller
         $rec->name = trim($request->input('name')); 
         $rec->tenant_type_id = trim($request->input('tenant_type_id')); 
         $rec->address = trim($request->input('address')); 
+        $rec->google_maps = trim($request->input('google_maps')); 
+        $rec->coordinate = trim($request->input('coordinate')); 
+        $rec->type = trim($request->input('type')); 
         $rec->email = trim($request->input('email')); 
         $rec->phone = trim($request->input('phone')); 
-        $rec->fax = trim($request->input('fax'));  
+        $rec->whatsapp = trim($request->input('whatsapp')); 
+        $rec->instagram = trim($request->input('instagram'));
+        $rec->facebook = trim($request->input('facebook'));
+        $rec->youtube = trim($request->input('youtube'));
+        $rec->website_url = trim($request->input('website_url'));
+        $rec->description = trim($request->input('description')); 
         $rec->is_active = $request->input('is_active');
         
         //Tenant
