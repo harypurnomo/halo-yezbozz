@@ -68,7 +68,10 @@
                         @foreach ($recTenants as $index => $row)
                         <tr>
                             <td>{{ ++$index }}</td>
-                            <td><a href="{{ route('master-tenant.edit',['id'=>$row->id]) }}">{{ $row->name }}</a></td>
+                            <td>
+                                <a href="{{ route('master-tenant.edit',['id'=>$row->id]) }}">{{ $row->name }}</a>
+                                <br><em>Tipe : {{ $row->type }}</em>
+                            </td>
                             <td>{{ $row->type_name }}</td>
                             <td>{{ $row->address }}</td>
                             <td><a href="{{ $row->google_maps }}" target="_blank">{!! $row->google_maps !!}</a></td>
