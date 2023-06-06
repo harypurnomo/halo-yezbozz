@@ -99,9 +99,6 @@ class TenantController extends Controller
         $rules=[
             'name'=>'required|min:5|max:100',
             'tenant_type_id'=>'required',
-            'address'=>'required',
-            'email'=>'required|min:5|max:100',
-            'phone'=>'required|min:8|max:30',
             'is_active'=>'required'
         ];
 
