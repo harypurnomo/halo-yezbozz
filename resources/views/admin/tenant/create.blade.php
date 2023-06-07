@@ -67,7 +67,7 @@
                             <div class="tab-pane fade show active p-3" id="general-info" role="tabpanel" aria-labelledby="tab-general">
                                 <div class="form-group">
                                     <label>{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }} <span class="kt-font-danger">*</span></label>
-                                    <input type="text" name="name" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}" value="{{ old('name') }}" required="" minlength="5" maxlength="100">
+                                    <input type="text" name="name" class="form-control" placeholder="{{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}" value="{{ old('name') }}" required="" minlength="3" maxlength="100">
                                 </div>
         
                                 <div class="form-group">

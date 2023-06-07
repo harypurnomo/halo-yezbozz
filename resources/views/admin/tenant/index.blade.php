@@ -46,7 +46,7 @@
 
                 <div class="alert alert-light alert-elevate fade show" role="alert">
                     <div class="alert-icon"><i class="flaticon-information kt-font-brand"></i></div>
-                    <div class="alert-text"><b>Click the blue text to edit your data.</b></div>
+                    <div class="alert-text"><b>Click the blue text to edit your data.</b> Please check first before create a new customer.</div>
                 </div>
 
                 <!--begin: Datatable -->
@@ -58,7 +58,7 @@
                             <th>Category</th>
                             <th>Address</th>
                             <th>Google Maps</th>
-                            <th>Email</th>
+                            <th>Additional</th>
                             <th>Last Updated</th>
                             <th>Active</th>
                             <th></th>
@@ -73,9 +73,18 @@
                                 <br><em>Tipe : {{ $row->type }}</em>
                             </td>
                             <td>{{ $row->type_name }}</td>
-                            <td>{{ $row->address }}</td>
-                            <td><a href="{{ $row->google_maps }}" target="_blank">{!! $row->google_maps !!}</a></td>
-                            <td>{{ $row->email }}</td>
+                            <td>
+                                {{ $row->address }}
+                            </td>
+                            <td>
+                                <a href="{{ $row->google_maps }}" target="_blank">{!! $row->google_maps !!}</a>
+                                <br><br>Coordinate : {{ $row->coordinate }}
+                            </td>
+                            <td>
+                                Email : {{ $row->email }} <br>
+                                Phone : {{ $row->phone }} <br>
+                                Whatsapp : {{ $row->whatsapp }} <br>
+                            </td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
                                 {!! ($row->is_active=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}

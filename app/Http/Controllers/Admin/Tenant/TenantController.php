@@ -41,7 +41,7 @@ class TenantController extends Controller
     {   
         // dd($request->all());
         $rules=[
-            'name'=>'required|min:5|max:100',
+            'name'=>'required|min:3|max:100',
             'tenant_type_id'=>'required',
             'is_active'=>'required'
         ];
@@ -97,7 +97,7 @@ class TenantController extends Controller
     {
         // dd($request->all());
         $rules=[
-            'name'=>'required|min:5|max:100',
+            'name'=>'required|min:3|max:100',
             'tenant_type_id'=>'required',
             'is_active'=>'required'
         ];
