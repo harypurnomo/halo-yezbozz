@@ -23,7 +23,7 @@ class TransactionController extends Controller
         Library::validateAccess('view',$this->moduleLink);
 
         return view('admin.transaction.index')
-        ->with('recTransactions',Transactions::all())
+        ->with('recTransactions',Transactions::getAllData())
         ->with('recTotalTransactions',Transactions::all()->count())
         ->with('recCompleteTransactions',Transactions::where('is_complete',1)->count())
         ->with('recNotYetTransactions',Transactions::where('is_complete',0)->count());

@@ -54,33 +54,29 @@
                 </div>
 
                 <!--begin: Datatable -->
-                <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
+                <table class="table table-striped- table-bordered table-hover table-checkable advance-datatable">
                     <thead>
                         <tr>
                             <th width="100">#No</th>
-                            {{-- <th>Invoice</th> --}}
                             <th>Nama Pembeli</th>
-                            <th>Tahun</th>
                             <th>Alamat</th>
-                            <th>Kota</th>
-                            <th>Provinsi</th>
-                            <th>Coordinate</th>
-                            {{-- <th>Nama Produk</th> --}}
-                            {{-- <th>Jumlah Dibeli</th> --}}
                             <th>Completed</th>
-                            {{-- <th></th> --}}
                         </tr>
                     </thead>                   
                     <tbody>
                         @foreach ($recTransactions as $index => $row)
                         <tr>
                             <td>{{ ++$index }}</td>
-                            <td><a href="{{ route('master-transaction.edit',['id'=>$row->id]) }}">{{ $row->nama_pembeli }}</a></td>
-                            <td>{{ $row->tahun }}</td>
-                            <td>{{ $row->alamat_pengiriman }}</td>
-                            <td>{{ $row->kota }}</td>
-                            <td>{{ $row->provinsi }}</td>
-                            <td>{{ $row->coordinate }}</td>
+                            <td>
+                                <a href="{{ route('master-transaction.edit',['id'=>$row->id]) }}">{{ $row->nama_pembeli }}</a>
+                                <br><br>
+                                tahun : {{ $row->tahun }}
+                            </td>
+                            <td>
+                                {{ $row->alamat_pengiriman }}
+                                <br><br>
+                                coordinate : {{ $row->coordinate }}
+                            </td>
                             <td>
                                 {!! ($row->is_complete=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill" style="background-color: green;">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
                             </td>
@@ -94,5 +90,22 @@
     </div>
 
 </div>
+    
+@endsection
+
+@section('js')
+<script>
+    $(document).ready( function () {
+
+        $('.advance-datatable').DataTable({
+            processing: true,
+            render: true,
+            responsive: true,
+            deferRender: true,
+            dom: 'Plfrtip'
+        })
+        
+    } );
+</script>
     
 @endsection

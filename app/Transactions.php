@@ -38,4 +38,10 @@ class Transactions extends Model
      */
     public $timestamps = true;
 
+    public static function getAllData() {
+        $data = \DB::table('transaction')->select('id','no_invoice','nama_pembeli','alamat_pengiriman','coordinate','tahun','is_complete')->get();
+        
+        return $data;
+    }
+
 }
