@@ -39,7 +39,9 @@ class Transactions extends Model
     public $timestamps = true;
 
     public static function getAllData() {
-        $data = \DB::table('transaction')->select('id','no_invoice','nama_pembeli','alamat_pengiriman','coordinate','tahun','is_complete')->get();
+        $data = \DB::table('transaction')->select('id','no_invoice','nama_pembeli','alamat_pengiriman','coordinate','tahun','is_complete')
+                ->where('is_complete',0)
+                ->limit(1000)->get();
         
         return $data;
     }
