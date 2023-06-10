@@ -49,6 +49,7 @@
 
     <!-- Aditional CSS
     ============================================= -->
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
     <link href="{{ url('admin/template/css/jquery.password-indicator.css') }}?{{ date('YmdHis') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url('admin/template/css/custom.css') }}?{{ date('YmdHis') }}" rel="stylesheet" type="text/css" />
 

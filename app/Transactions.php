@@ -46,4 +46,12 @@ class Transactions extends Model
         return $data;
     }
 
+    public static function getDataComplete() {
+        $data = \DB::table('transaction')->select('*')
+                ->where('is_complete',1)
+                ->limit(1000)->get();
+        
+        return $data;
+    }
+
 }

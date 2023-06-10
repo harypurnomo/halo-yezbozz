@@ -175,6 +175,9 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     //Transaction
     Route::resource('master-transaction', 'Admin\Transaction\TransactionController');
 
+    //Trend Point
+    Route::resource('trend-point', 'Admin\TrendPoint\TrendPointController');
+
     //Billings Tenant
     Route::resource('master-billing', 'Admin\Billing\BillingController');
 
