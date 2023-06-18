@@ -24,7 +24,7 @@ class CustomerTrackingController extends Controller
 
         return view('admin.customertracking.index')
         ->with('recTenantsActive',Tenants::getIsActive()->get())
-        ->with('recTenantsTransactions',Tenants::all()->count());
+        ->with('recTenantsTransactions',Tenants::getIsActive()->count());
     }
 
 }
