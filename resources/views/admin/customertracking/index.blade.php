@@ -50,7 +50,7 @@
                         <b>Click the blue text to edit your data.</b>
                     </div> 
                     <hr>
-                    <h5> Total : {{ $recTotalTransactions }} | Completed : {{ $recCompleteTransactions }} | Not Yet : {{ $recNotYetTransactions }} </h5>
+                    <h5> Total Customers: {{ $recTenantsTransactions }} </h5>
                 </div>
 
                 <div id = "map" style = "width: 100%; height: 580px">
@@ -67,8 +67,8 @@
 <script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <script>
         var locations = [
-            @foreach ($recTransactionComplete as $point)
-                ["{{ $point->nama_produk }}",{{ $point->coordinate }}], 
+            @foreach ($recTenantsActive as $point)
+                ["{{ $point->name }}",{{ $point->coordinate }}], 
             @endforeach
             ];
 

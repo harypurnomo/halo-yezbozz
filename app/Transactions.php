@@ -49,7 +49,7 @@ class Transactions extends Model
     public static function getDataComplete() {
         $data = \DB::table('transaction')->select('*')
                 ->where('is_complete',1)
-                ->limit(1000)->get();
+                ->get();
         
         return $data;
     }

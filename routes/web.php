@@ -178,6 +178,9 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     //Trend Point
     Route::resource('trend-point', 'Admin\TrendPoint\TrendPointController');
 
+    //Customer Tracking
+    Route::resource('customer-tracking', 'Admin\CustomerTracking\CustomerTrackingController');
+
     //Billings Tenant
     Route::resource('master-billing', 'Admin\Billing\BillingController');
 

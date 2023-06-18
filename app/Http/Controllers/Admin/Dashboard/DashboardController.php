@@ -20,8 +20,6 @@ class DashboardController extends Controller
     public function index()
     {
         // Validate Access
-        Library::validateAccess('view',$this->moduleLink);
-
         return view('admin.dashboard.index');
     }
 

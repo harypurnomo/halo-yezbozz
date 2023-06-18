@@ -50,4 +50,14 @@ class Tenants extends Model
         return $strQuery;
     } 
 
+    public static function getIsActive(){
+        $strQuery = DB::table('tenants As a')
+                    ->leftjoin('tenant_type As b','a.tenant_type_id','=','b.id')
+                    ->orderBy('a.updated_at','desc')
+                    ->where('a.is_active',1)
+                    ->select('a.*','b.name As type_name');
+
+        return $strQuery;
+    } 
+
 }
