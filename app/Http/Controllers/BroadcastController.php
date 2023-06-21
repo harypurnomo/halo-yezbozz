@@ -33,7 +33,7 @@ class BroadcastController extends Controller
 
             $strBroadcast = Broadcast::where('uuid',$strBroadcastRecipients->broadcast_uuid)->first();
 
-            // dd($strBroadcast);
+            // dd($strBroadcast->subject);
 
             $data = [
                 'name'=>$strBroadcastRecipients->name,
@@ -44,7 +44,7 @@ class BroadcastController extends Controller
             ];
 
             Mail::send('emails.broadcast', ['row'=>$data], function($message) use($data) {
-                $message->from(env('MAIL_FROM', 'noreply@klakklik.id'), env('MAIL_NAME_FROM', 'KLAKKLIK Team'));
+                $message->from(env('MAIL_FROM_ADDRESS', 'noreply@klakklik.id'), env('MAIL_FROM_NAME', 'KLAKKLIK Team'));
                 $message->to($data['email'], $data['name']);
                 $message->subject($data['subject']);
                 $message->priority(3);

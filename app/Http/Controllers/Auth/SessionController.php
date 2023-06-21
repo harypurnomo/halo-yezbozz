@@ -107,7 +107,7 @@ class SessionController extends Controller
             Mail::send('emails.registerconfirmation', $data, function($message) use($data) {
                 $message->to($data['email'], $data['name']);
                 $message->subject('User Activation');
-                $message->from(env('MAIL_FROM'),env('MAIL_NAME_FROM'));
+                $message->from(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_NAME'));
             });
 
             return redirect(route('lang.successmessage',['lang'=>$lang]));
@@ -171,7 +171,7 @@ class SessionController extends Controller
             Mail::send('emails.fotgot-password', $data, function($message) use($data) {
                 $message->to($data['email'], $data['name']);
                 $message->subject('Your password has been reset');
-                $message->from(env('MAIL_FROM'),env('MAIL_NAME_FROM'));
+                $message->from(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_NAME'));
             });
 
             return redirect(route('lang.successmessage',['lang'=>$lang]));
