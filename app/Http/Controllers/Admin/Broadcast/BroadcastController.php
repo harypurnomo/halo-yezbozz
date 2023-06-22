@@ -37,9 +37,16 @@ class BroadcastController extends Controller
         // Validate Access
         Library::validateAccess('view',$this->moduleLink);
 
+        $getBroadcastID = Broadcast::where('uuid',$id)->first()->id;
+
+        // dd($getBroadcastID);
+
         return view('admin.broadcast.show')
         ->with('recBroadcastByUUID',Broadcast::where('uuid',$id)->get())
-        ->with('recBroadcastRecipientsByUUID',BroadcastRecipients::where('broadcast_uuid',$id)->get());
+        ->with('recBroadcastRecipientsByUUID',BroadcastRecipients::where('broadcast_uuid',$id)->get())
+        ->with('recBroadcastRecipientsCountIsSent',BroadcastRecipients::where('broadcast_uuid',$id)->where('is_status',1)->count())
+        ->with('recBroadcastRecipientsCountIsPending',BroadcastRecipients::where('broadcast_uuid',$id)->where('is_status',0)->count())
+        ->with('recBroadcastRecipientLinksIsClicked',BroadcastRecipientLinks::where('broadcast_id',$getBroadcastID)->where('is_clicked',1)->count());
     }
 
     public function create()

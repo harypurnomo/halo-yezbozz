@@ -63,6 +63,16 @@
                 </div>
                 @endforeach
 
+                <div class="alert alert-light alert-elevate fade show" role="alert">
+                    <div class="alert-icon"><i class="flaticon-information kt-font-brand"></i></div>
+                    <div class="alert-text"><b>Summary Report</b></div>
+                    <ul>
+                        <li>Total Email was Successfully : {{ $recBroadcastRecipientsCountIsSent }} </li>
+                        <li>Total Email Pending : {{ $recBroadcastRecipientsCountIsPending }}</li>
+                        <li>Email Conversion Rate : {{ $recBroadcastRecipientLinksIsClicked }} Clicked</li>
+                    </ul>
+                </div>
+
                 <hr>
                 <!--begin: Datatable -->
                 <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
