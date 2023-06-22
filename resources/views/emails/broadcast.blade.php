@@ -8,10 +8,13 @@
   body{
     background-color: #ffffff !important;
   }
+  h1, h2, h3, h4, h5, h6{
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6{
+    display: block;
+  }
   .wrap-box{
-    border : 1px solid #CCCCCC;
-    border-radius: 10px;
-    padding: 20px;
     background-color: #ffffff;
   }
   .button {
@@ -34,24 +37,22 @@
       {{-- <img src="https://halo.yezbozz.id/uploads/logo/1667223693pt-yezbozz-inovasi-digital.png" alt="{{ Library::companyProfile()[0]->company_name }} Logo" width="100" class="img-responsive m-bottom-20"> --}}
           {{-- <h2>Hello, {{ $row['name'] }}</h2> --}}
           <div style="margin-top:20px; margin-bottom:20px">
+            <h5>Harga termurah dan penjual terpercaya hanya di <a href="https://www.tokopedia.com/yezbozz" target="_blank">tokopedia.com/yezbozz</a></h5>
             <p>
-              {{-- {!! $row['message'] !!} --}}
+              {!! $row['message'] !!}
               {{-- <br>Thanks,
               <br>{{ Library::companyProfile()[0]->company_name }} Teams. --}}
-              <br><br><br>Harga termurah dan penjual terpercaya hanya di www.tokopedia.com/yezbozz
-              <br>---------------
-              <br>"Sahabat Para Pedagang" "Pasti Ada Diskon Diantara KITA"
-              <br>www.tokopedia.com/yezbozz/etalase/discount
-              <br>---------------
-              <br>Untuk yang masih penasaran ada apa aja sih,
-              <br>klik link dibawah ini ya. 🔽
-              <br>✨Website : yezbozz.id
-              <br>✨Tokopedia : www.tokopedia.com/yezbozz
-              <br>✨Facebook : www.facebook.com/yezbozz.id
-              <br>✨Instagram : www.instagram.com/yezbozz.oss/
-              <br>---------------
-              <br>😍Belanja makin murah makin mudah geys. Happy
-              shopping kakak😍
+              <h4 style="margin: 10px 0px;">"YEZBOZZ Sahabat Para Pedagang" "Pasti Ada Diskon Diantara KITA"</h4>
+              <h4 style="margin: 10px 0px;">Klik <a href="https://www.tokopedia.com/yezbozz/etalase/discount">disini</a></h4>
+              ---------------
+              <h4 style="margin: 10px 0px;">Ikuti Sosial Media Kami, Agar Kamu Dapat Info Harga Sayuran</h4>
+              <h4 style="margin: 10px 0px;">klik link dibawah ini ya. 🔽</h4>
+              <h4><a href="https://www.tokopedia.com/yezbozz" target="_blank">✨Tokped : tokopedia.com/yezbozz</a></h4>
+              <h4><a href="https://www.facebook.com/yezbozz.id" target="_blank">✨Facebook : facebook.com/yezbozz.id</a></h4>
+              <h4><a href="https://www.instagram.com/yezbozz.oss/" target="_blank">✨Instagram : instagram.com/yezbozz.oss/</a></h4>
+              <h4><a href="https://yezbozz.id/" target="_blank">✨Website : yezbozz.id</a></h4>
+              <h3>😍Belanja makin murah makin mudah. Happy
+                shopping kakak😍</h3>
             </p>
           </div> 
     </div>
