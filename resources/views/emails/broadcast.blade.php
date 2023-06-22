@@ -35,7 +35,7 @@
           {{-- <h2>Hello, {{ $row['name'] }}</h2> --}}
           <div style="margin-top:20px; margin-bottom:20px">
             <p>
-              {!! $row['message'] !!}
+              {{-- {!! $row['message'] !!} --}}
               {{-- <br>Thanks,
               <br>{{ Library::companyProfile()[0]->company_name }} Teams. --}}
               <br><br><br>Harga termurah dan penjual terpercaya hanya di www.tokopedia.com/yezbozz

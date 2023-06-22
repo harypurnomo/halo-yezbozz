@@ -63,17 +63,6 @@ class BroadcastController extends Controller
         if($validation->fails()) {  
           return redirect(route('master-broadcast.create'))->withErrors($validation)->withInput();
         }
-        
-        // dd(trim($request->input('message')));
-        // $text = trim($request->input('message'));
-        // preg_match_all('~<a(.*?)href="([^"]+)"(.*?)>~', $text, $matches);
-        // $fullHtml = $matches[0];
-        // $fullUrl = $matches[2];
-        // $attribute =  $matches[3];
-        // foreach ($fullHtml as $key => $item) {
-        //     $text = str_replace($item, '<a href="'.url('url-tracker?id='.$key.'&url='.$fullUrl[$key]).'" '.$attribute[$key].'>', $text);
-        // }
-        // dd($text);
 
         $rec = new Broadcast;
         $rec->subject = trim($request->input('subject'));
@@ -112,6 +101,7 @@ class BroadcastController extends Controller
             // dd($strQueryRecipients);
             foreach ($strQueryRecipients as $key => $value) {
                 $recRecipientsAnnouncement = new BroadcastRecipients;
+                $recRecipientsAnnouncement->broadcast_id = $broadcastId;
                 $recRecipientsAnnouncement->broadcast_uuid = time();
                 $recRecipientsAnnouncement->name = $value->name;
                 $recRecipientsAnnouncement->email = $value->email;
@@ -139,6 +129,33 @@ class BroadcastController extends Controller
             
 
         return redirect(route('master-broadcast.index'))->with('success-update','Your work has been saved!');
+    }
+
+    public function destroy($id)
+    {
+        // Validate Access
+        Library::validateAccess('delete',$this->moduleLink);
+
+        try
+        {
+            $rec = Broadcast::find($id);
+            $rec->delete();
+
+            $recBroadcastRecipients = BroadcastRecipients::where('broadcast_id',$id);
+            $recBroadcastRecipients->delete();
+
+            $recBroadcastLink = BroadcastLink::where('broadcast_id',$id);
+            $recBroadcastLink->delete();
+
+            $recBroadcastRecipientLinks = BroadcastRecipientLinks::where('broadcast_id',$id);
+            $recBroadcastRecipientLinks->delete();
+
+            return response()->json(['status'=>1,'msg'=>'Your work has been saved!'], 200);
+        } 
+        catch (\Exection $e) 
+        {
+            return response()->json(['status'=>0,'error'=>$e->getMessage()], 200);
+        }
     }
 
     function detailLinkClick($id,$email)

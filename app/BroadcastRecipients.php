@@ -15,7 +15,7 @@ class BroadcastRecipients extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'broadcast_uuid', 'name', 'email', 'is_status', 'created_at', 'updated_at'
+        'id', 'broadcast_id', 'broadcast_uuid', 'name', 'email', 'is_status', 'created_at', 'updated_at'
     ];
 
     protected $primaryKey   = 'id';

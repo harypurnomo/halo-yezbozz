@@ -1,6 +1,11 @@
 @extends('admin.layouts.template')
 
 @section('content')
+<style>
+    td img{
+        width: 200px;
+    }
+</style>
 <!-- begin:: Content Head -->
 <div class="kt-subheader  kt-grid__item" id="kt_subheader">
     <div class="kt-container  kt-container--fluid ">
@@ -58,6 +63,7 @@
                             <th>Message</th>
                             <th>Files</th>
                             <th>Last Updated</th>
+                            <th></th>
                         </tr>
                     </thead>                   
                     <tbody>
@@ -68,6 +74,11 @@
                             <td>{!! $row->message !!}</td>
                             <td><a href="{{ url('/uploads/broadcast/file_attachement') }}/{{ $row->file_attachement }}" target="_blank">{{ $row->file_attachement }}</a></td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
+                            <td>
+                                <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-broadcast">
+                                    <i class="flaticon2-trash"></i> Remove
+                                </span>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>                    

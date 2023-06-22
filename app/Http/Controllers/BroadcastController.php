@@ -43,6 +43,8 @@ class BroadcastController extends Controller
                 'file_attachement'=>$strBroadcast->file_attachement
             ];
 
+            return view('emails.broadcast')->with('row',$data);
+
             Mail::send('emails.broadcast', ['row'=>$data], function($message) use($data) {
                 $message->from(env('MAIL_FROM_ADDRESS', 'noreply@klakklik.id'), env('MAIL_FROM_NAME', 'KLAKKLIK Team'));
                 $message->to($data['email'], $data['name']);
