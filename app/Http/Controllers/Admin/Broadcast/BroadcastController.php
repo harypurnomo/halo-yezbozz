@@ -67,7 +67,7 @@ class BroadcastController extends Controller
         $rec = new Broadcast;
         $rec->subject = trim($request->input('subject'));
         $rec->message = trim($request->input('message'));
-        $rec->uuid = time();
+        $rec->uuid = time().str_random(25);
 
         //File Attachement
         if( $request->has('files') ) {
@@ -81,6 +81,7 @@ class BroadcastController extends Controller
 
         $rec->save();
         $broadcastId = $rec->id;
+        $broadcastUUID = $rec->uuid;
 
             // Insert Broadcast Link
             $text = trim($request->input('message'));
@@ -102,7 +103,7 @@ class BroadcastController extends Controller
             foreach ($strQueryRecipients as $key => $value) {
                 $recRecipientsAnnouncement = new BroadcastRecipients;
                 $recRecipientsAnnouncement->broadcast_id = $broadcastId;
-                $recRecipientsAnnouncement->broadcast_uuid = time();
+                $recRecipientsAnnouncement->broadcast_uuid = $broadcastUUID;
                 $recRecipientsAnnouncement->name = $value->name;
                 $recRecipientsAnnouncement->email = $value->email;
                 $recRecipientsAnnouncement->save();
