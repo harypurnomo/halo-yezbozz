@@ -157,6 +157,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::post('master-group-announcement/manage-recipients/group/post', 'Admin\GroupAnnouncement\GroupAnnouncementController@storeRecipients')->name('manage-recipients.recipients.post');
     Route::get('master-group-announcement/manage-recipients/delete-recipients/{id}/{groups_announcement_id}', 'Admin\GroupAnnouncement\GroupAnnouncementController@destroyRecipients')->name('manage-recipients.delete');
     Route::get('master-broadcast-track/{id}/{email}', 'Admin\Broadcast\BroadcastController@detailLinkClick');
+    Route::resource('master-contact-email', 'Admin\ContactEmail\ContactEmailController');
 
     //Sales
     Route::resource('master-product', 'Admin\Product\ProductController');

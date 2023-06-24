@@ -26,4 +26,13 @@ class RecipientsAnnouncement extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    public static function getAll(){
+        $strQuery = DB::table('recipients_announcement As a')
+                    ->join('groups_announcement As b','a.groups_announcement_id','=','b.id')
+                    ->orderBy('a.groups_announcement_id','asc')
+                    ->select('a.*','b.name as group_name');
+
+        return $strQuery;
+    }
 }
