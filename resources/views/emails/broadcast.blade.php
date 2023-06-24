@@ -36,7 +36,7 @@
       {{-- <img src="{{ url('uploads/logo') }}/{{ Library::companyProfile()[0]->logo }}" alt="{{ Library::companyProfile()[0]->company_name }} Logo" width="100" class="img-responsive m-bottom-20"> --}}
       {{-- <img src="https://halo.yezbozz.id/uploads/logo/1667223693pt-yezbozz-inovasi-digital.png" alt="{{ Library::companyProfile()[0]->company_name }} Logo" width="100" class="img-responsive m-bottom-20"> --}}
           <div style="margin-top:20px; margin-bottom:20px">
-            <h3>Halo Kakak {{ $row['name'] }}, <br> Cobain deh, Belanja Sayur Online dengan penjual terpercaya di <a href="https://www.tokopedia.com/yezbozz" target="_blank">tokopedia.com/yezbozz</a></h3>
+            <h3>Cobain deh, Belanja Sayur Online dengan penjual terpercaya di <a href="https://www.tokopedia.com/yezbozz" target="_blank">tokopedia.com/yezbozz</a></h3>
             <p>
               {!! $row['message'] !!}
               {{-- <br>Thanks,
