@@ -104,7 +104,7 @@ class BroadcastController extends Controller
             }
 
             //store in table broadcast_recipients
-            $strQueryRecipients = RecipientsAnnouncement::where('groups_announcement_id',$request->input('groups_announcement_id'))->get();
+            $strQueryRecipients = RecipientsAnnouncement::where('groups_announcement_id',$request->input('groups_announcement_id'))->where('is_active',1)->get();
 
             // dd($strQueryRecipients);
             foreach ($strQueryRecipients as $key => $value) {

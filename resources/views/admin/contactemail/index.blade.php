@@ -58,6 +58,7 @@
                             <th>Email</th>
                             <th>Group Name</th>
                             <th>Last Updated</th>
+                            <th>Active</th>
                             <th></th>
                         </tr>
                     </thead>                   
@@ -69,6 +70,9 @@
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->group_name }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
+                            <td>
+                                {!! ($row->is_active=='1')?'<span class="kt-badge kt-badge--brand kt-badge--inline kt-badge--pill">Yes</span>':'<span class="kt-badge kt-badge--brand kt-danger--inline kt-badge--pill">No</span>' !!}
+                            </td>
                             <td>
                                 <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-contact-email">
                                     <i class="flaticon2-trash"></i> Remove

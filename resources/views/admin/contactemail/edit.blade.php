@@ -71,6 +71,14 @@
                             <label>Email <span class="kt-font-danger">*</span></label>
                             <input type="email" name="email" class="form-control" value="{{ $recRecipientsAnnouncementByID->email }}" placeholder="Your Recipient Email" required="">
                         </div>
+                        <div class="form-group">
+                            <label for="is_active">Active <span class="kt-font-danger">*</span></label>
+                            <select class="form-control col-4" name="is_active" required="">
+                                <option value="">-- choose one of them --</option>
+                                <option value="1" {{ ($recRecipientsAnnouncementByID->is_active==1)?'selected':'' }}>Yes</option>
+                                <option value="0" {{ ($recRecipientsAnnouncementByID->is_active==0)?'selected':'' }}>No</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="kt-portlet__foot">
                         <div class="kt-form__actions">

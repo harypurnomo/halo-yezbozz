@@ -71,7 +71,8 @@ class ContactEmailController extends Controller
         // dd($request->all());
         $rules=[
             'name'=>'required|min:3',
-            'email'=>'required'
+            'email'=>'required',
+            'is_active'=>'required'
         ];
 
         $validation = Validator::make($request->input(),$rules);
@@ -83,6 +84,7 @@ class ContactEmailController extends Controller
         $rec->groups_announcement_id = $request->input('groups_announcement_id');
         $rec->name = trim($request->input('name'));
         $rec->email = trim($request->input('email'));
+        $rec->is_active = $request->input('is_active');
         $rec->save();
 
         return redirect(route('master-contact-email.index'))->with('success-update','Your work has been saved!');
