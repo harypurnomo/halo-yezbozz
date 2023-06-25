@@ -113,7 +113,8 @@ class GroupAnnouncementController extends Controller
 
         return view('admin.groupannouncement.add-recipient')
         ->with('groups_announcement_id',$groups_announcement_id)
-        ->with('recRecipientsAnnouncement',RecipientsAnnouncement::where('groups_announcement_id',$groups_announcement_id)->orderBy('updated_at','desc')->get());
+        ->with('recRecipientsAnnouncement',RecipientsAnnouncement::where('groups_announcement_id',$groups_announcement_id)->where('is_active',1)->orderBy('updated_at','desc')->get())
+        ->with('recRecipientsAnnouncementUnactive',RecipientsAnnouncement::where('groups_announcement_id',$groups_announcement_id)->where('is_active',0)->orderBy('updated_at','desc')->get());
     }
 
     public function storeRecipients(Request $request)

@@ -84,6 +84,7 @@
 
                 <hr>
                 <!--begin: Datatable -->
+                <h2>User Active</h2>
                 <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
                     <thead>
                         <tr>
@@ -111,6 +112,36 @@
                     </tbody>                    
                 </table>
                 <!--end: Datatable -->
+
+                <hr>
+                <!--begin: Datatable -->
+                <h2>User Unactive</h2>
+                <table class="table table-striped- table-bordered table-hover table-checkable simple-datatable">
+                    <thead>
+                        <tr>
+                            <th width="100">#No</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Last Updated</th>
+                            <th></th>
+                        </tr>
+                    </thead>                   
+                    <tbody>
+                        @foreach ($recRecipientsAnnouncementUnactive as $index => $row)
+                        <tr>
+                            <td>{{ ++$index }}</td>
+                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->email }}</td>
+                            <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
+                            <td>
+                                <a href="{{ route('manage-recipients.delete',['id'=>$row->id,'groups_announcement_id'=>$groups_announcement_id]) }}" class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill">
+                                    <i class="flaticon2-trash"></i>&nbsp; Remove
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>                    
+                </table>
             </div>
         </div>
     </div>
