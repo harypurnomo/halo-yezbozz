@@ -15,7 +15,7 @@ class Broadcast extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'subject', 'message', 'file_attachement', 'uuid', 'created_at', 'updated_at'
+        'id', 'subject', 'message', 'file_attachement', 'uuid', 'groups_announcement_id', 'created_at', 'updated_at'
     ];
 
     protected $primaryKey   = 'id';
@@ -26,4 +26,13 @@ class Broadcast extends Model
      * @var bool
      */
     public $timestamps = true;
+
+    public static function getAll(){
+        $strQuery = DB::table('broadcast As a')
+                    ->leftjoin('groups_announcement As b','a.groups_announcement_id','=','b.id')
+                    ->orderBy('a.updated_at','desc')
+                    ->select('a.*','b.name as group_name');
+
+        return $strQuery;
+    }
 }

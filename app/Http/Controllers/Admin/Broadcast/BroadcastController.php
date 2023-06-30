@@ -29,7 +29,7 @@ class BroadcastController extends Controller
         Library::validateAccess('view',$this->moduleLink);
 
         return view('admin.broadcast.index')
-        ->with('recBroadcast',Broadcast::orderBy('updated_at','desc')->get());
+        ->with('recBroadcast',Broadcast::getAll()->get());
     }
 
     public function show($id)
@@ -75,6 +75,7 @@ class BroadcastController extends Controller
         $rec->subject = trim($request->input('subject'));
         $rec->message = trim($request->input('message'));
         $rec->uuid = time().str_random(25);
+        $rec->groups_announcement_id = $request->input('groups_announcement_id');
 
         //File Attachement
         if( $request->has('files') ) {

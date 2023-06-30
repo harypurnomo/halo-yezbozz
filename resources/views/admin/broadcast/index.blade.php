@@ -62,6 +62,7 @@
                             <th>Subject</th>
                             <th>Message</th>
                             <th>Files</th>
+                            <th>Group Announcement</th>
                             <th>Last Updated</th>
                             <th></th>
                         </tr>
@@ -73,6 +74,7 @@
                             <td><a href="{{ route('master-broadcast.show',['uuid'=>$row->uuid]) }}">{{ $row->subject }}</a></td>
                             <td>{!! $row->message !!}</td>
                             <td><a href="{{ url('/uploads/broadcast/file_attachement') }}/{{ $row->file_attachement }}" target="_blank">{{ $row->file_attachement }}</a></td>
+                            <td>{{ $row->group_name }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
                                 <span class="kt-badge kt-badge--danger kt-badge--inline kt-badge--pill delete-link" data-id="{{ $row->id }}" data-link="administrator/master-broadcast">
