@@ -81,23 +81,6 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>Logo/Picture {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</label>
-                                    <div class="col-4">
-                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
-                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
-                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
-                                                <i class="fa fa-pen"></i>
-                                                <input type="file" name="picture">
-                                            </label>
-                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
-                                                <i class="fa fa-times"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <small>The best size 300 x 150</small>
-                                </div>
-        
-                                <div class="form-group">
                                     <label>Address</label>
                                     <textarea name="address" class="form-control" rows="5">{{ old('address') }}</textarea>
                                 </div>
@@ -124,11 +107,6 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ old('email') }}" minlength="5" maxlength="100">
-                                </div>
-        
-                                <div class="form-group">
                                     <label>Phone Number</label>
                                     <input type="text" name="phone" class="form-control" placeholder="Your Phone Number" value="{{ old('phone') }}" minlength="8" maxlength="30">
                                     <small>Must be at least 8 number long </small>
@@ -139,12 +117,34 @@
                                     <input type="text" name="whatsapp" class="form-control" placeholder="Your Whatsapp" value="{{ old('whatsapp') }}" minlength="8" maxlength="30">
                                     <small>Must be at least 8 number long </small>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ old('email') }}" minlength="5" maxlength="100">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Logo/Picture {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</label>
+                                    <div class="col-4">
+                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
+                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
+                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
+                                                <i class="fa fa-pen"></i>
+                                                <input type="file" name="picture">
+                                            </label>
+                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <small>The best size 300 x 150</small>
+                                </div>
         
                                 <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="is_active" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="1">Yes</option>
+                                        <option value="1" selected>Yes</option>
                                         <option value="0">No</option>
                                     </select>
                                 </div>
