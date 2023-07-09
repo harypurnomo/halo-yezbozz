@@ -117,28 +117,6 @@
                                     <input type="text" name="whatsapp" class="form-control" placeholder="Your Whatsapp" value="{{ old('whatsapp') }}" minlength="8" maxlength="30">
                                     <small>Must be at least 8 number long </small>
                                 </div>
-
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ old('email') }}" minlength="5" maxlength="100">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Logo/Picture {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</label>
-                                    <div class="col-4">
-                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
-                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
-                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
-                                                <i class="fa fa-pen"></i>
-                                                <input type="file" name="picture">
-                                            </label>
-                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
-                                                <i class="fa fa-times"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <small>The best size 300 x 150</small>
-                                </div>
         
                                 <div class="form-group">
                                     <label for="is_active">Active <span class="kt-font-danger">*</span></label>
@@ -175,6 +153,26 @@
                                         <label>Company Description</label>
                                         <textarea name="description" id="article_desc_en" class="form-control summernote">{{ old('description') }}</textarea>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ old('email') }}" minlength="5" maxlength="100">
+                                </div>
+                                <div class="form-group">
+                                    <label>Logo/Picture {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</label>
+                                    <div class="col-4">
+                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
+                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
+                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
+                                                <i class="fa fa-pen"></i>
+                                                <input type="file" name="picture">
+                                            </label>
+                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <small>The best size 300 x 150</small>
                                 </div>
                             </div>
                         </div>
