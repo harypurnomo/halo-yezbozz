@@ -46,7 +46,7 @@ class BroadcastController extends Controller
             // return view('emails.broadcast')->with('row',$data);
 
             Mail::send('emails.broadcast', ['row'=>$data], function($message) use($data) {
-                $message->from(env('MAIL_FROM_ADDRESS', 'noreply@klakklik.id'), env('MAIL_FROM_NAME', 'KLAKKLIK Team'));
+                $message->from(env('MAIL_FROM_ADDRESS', 'noreply@yezbozz.id'), env('MAIL_FROM_NAME', 'Yezbozz Team'));
                 $message->to($data['email'], $data['name']);
                 $message->subject($data['subject']);
                 $message->priority(3);
