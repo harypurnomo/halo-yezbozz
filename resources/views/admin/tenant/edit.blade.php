@@ -80,27 +80,6 @@
                                 </div>
         
                                 <div class="form-group">
-                                    <label>Logo/Picture {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</label>
-                                    <div class="col-4">
-                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
-                                            @if($recTenantsByID->picture=='')
-                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
-                                            @else
-                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/tenants') }}/{{ $recTenantsByID->picture }})"></div>
-                                            @endif
-                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
-                                                <i class="fa fa-pen"></i>
-                                                <input type="file" name="picture">
-                                            </label>
-                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
-                                                <i class="fa fa-times"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <small>The best size 300x150</small>
-                                </div>
-        
-                                <div class="form-group">
                                     <label>Address</label>
                                     <textarea name="address" class="form-control" rows="5">{{ $recTenantsByID->address }}</textarea>
                                 </div>
@@ -124,11 +103,6 @@
                                         <option value="Langganan Online & Offline" {{ ($recTenantsByID->type=="Langganan Online & Offline")?'selected':'' }}>Langganan Online & Offline</option>
                                         <option value="Prospect" {{ ($recTenantsByID->type=="Prospect")?'selected':'' }}>Prospect</option>
                                     </select>
-                                </div>
-        
-                                <div class="form-group">
-                                    <label>Email</label>
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ $recTenantsByID->email }}" minlength="5" maxlength="100">
                                 </div>
         
                                 <div class="form-group">
@@ -178,6 +152,30 @@
                                         <label>Description</label>
                                         <textarea name="description" id="article_desc_en" class="form-control summernote">{{ $recTenantsByID->description }}</textarea>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="Your Email" value="{{ $recTenantsByID->email }}" minlength="5" maxlength="100">
+                                </div>
+                                <div class="form-group">
+                                    <label>Logo/Picture {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}</label>
+                                    <div class="col-4">
+                                        <div class="kt-avatar kt-avatar--outline" id="kt_user_avatar">
+                                            @if($recTenantsByID->picture=='')
+                                            <div class="kt-avatar__holder" style="background-image: url({{ asset('admin/template/client/noimage.png') }});"></div>
+                                            @else
+                                            <div class="kt-avatar__holder" style="background-image: url({{ url('uploads/tenants') }}/{{ $recTenantsByID->picture }})"></div>
+                                            @endif
+                                            <label class="kt-avatar__upload" data-toggle="kt-tooltip" title="" data-original-title="Change">
+                                                <i class="fa fa-pen"></i>
+                                                <input type="file" name="picture">
+                                            </label>
+                                            <span class="kt-avatar__cancel" data-toggle="kt-tooltip" title="" data-original-title="Remove">
+                                                <i class="fa fa-times"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <small>The best size 300x150</small>
                                 </div>
                         </div>
                         <div class="form-group">
