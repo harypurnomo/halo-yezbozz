@@ -99,7 +99,7 @@
                                     <label for="type">Type of {{ Library::modules(Request::segment(1).'/'.Request::segment(2))[0]->module_name }}<span class="kt-font-danger">*</span></label>
                                     <select class="form-control col-4" name="type" required="">
                                         <option value="">-- choose one of them --</option>
-                                        <option value="Langganan Online">Langganan Online</option>
+                                        <option value="Langganan Online" selected>Langganan Online</option>
                                         <option value="Langganan Offline">Langganan Offline</option>
                                         <option value="Langganan Online & Offline">Langganan Online & Offline</option>
                                         <option value="Prospect">Prospect</option>
