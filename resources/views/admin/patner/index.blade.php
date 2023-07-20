@@ -67,7 +67,7 @@
                         <tr>
                             <td>{{ ++$index }}</td>
                             <td><a href="{{ route('master-patner.edit',['id'=>$row->id]) }}">{{ $row->title }}</a></td>
-                            <td>{{ url('uploads/patner').'/'.$row->picture }}</td>
+                            <td><a href="{{ url('uploads/patner').'/'.$row->picture }}" target="_blank">{{ url('uploads/patner').'/'.$row->picture }}</a></td>
                             <td>{{ $row->sort }}</td>
                             <td>{{ date_format(date_create($row->updated_at),"d M Y H:i:s") }}</td>
                             <td>
