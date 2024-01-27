@@ -32,6 +32,7 @@
                     <thead>
                         <tr>
                             <th width="100">#No</th>
+                            <th>Customers</th>
                             <th>Address</th>
                             <th>Google Maps</th>
                             <th>Additional</th>
@@ -41,6 +42,10 @@
                         @foreach ($recTenants as $index => $row)
                         <tr>
                             <td>{{ ++$index }}</td>
+                            <td>
+                                {{ $row->name }}
+                                <br><em>Tipe : {{ $row->type }}</em>
+                            </td>
                             <td>
                                 {{ $row->address }}
                             </td>
