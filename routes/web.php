@@ -81,6 +81,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::post('profile/change-password','Admin\Profile\SessionController@change_password_action')->name('change.password.action');
 
     Route::get('dashboard', 'Admin\Dashboard\DashboardController@index')->name('dashboard');
+    Route::get('dashboard-tenant-type/{tenant_type_id}', 'Admin\Dashboard\DashboardController@show')->name('dashboard.tenant.type');
     Route::get('traffic-analytics', 'Admin\TrafficAnalytic\TrafficAnalyticController@index')->name('traffic.analytics');
     
     // User Management

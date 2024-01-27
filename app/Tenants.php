@@ -38,6 +38,17 @@ class Tenants extends Model
         return $strQuery;
     } 
 
+    public static function getAllByTenantTypeID($tenant_type_id){
+        $strQuery = DB::table('tenants As a')
+                    ->leftjoin('tenant_type As b','a.tenant_type_id','=','b.id')
+                    ->orderBy('a.updated_at','desc')
+                    ->where('a.is_remove',0)
+                    ->where('a.tenant_type_id',$tenant_type_id)
+                    ->select('a.*','b.name As type_name');
+
+        return $strQuery;
+    } 
+
     public static function getAllByMe($userid){
         $strQuery = DB::table('tenants As a')
                     ->leftjoin('tenant_type As b','a.tenant_type_id','=','b.id')

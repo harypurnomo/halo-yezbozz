@@ -9,6 +9,7 @@ use App\Seo;
 use App\CompanyProfile;
 use App\Modules;
 use App\GoogleAnalytics;
+use App\Tenants;
 
 class Library 
 {
@@ -63,6 +64,11 @@ class Library
 
 	public static function googleAnalytics(){
 		$strQuery = GoogleAnalytics::first();
+		return $strQuery;
+	}
+
+	public static function TenantsTotalByType($tenantId){
+		$strQuery = Tenants::where('tenant_type_id',$tenantId)->get();
 		return $strQuery;
 	}
 

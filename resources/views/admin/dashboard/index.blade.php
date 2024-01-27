@@ -12,7 +12,7 @@
         </div>
     </div>
 </div>
-<!-- end:: Content Head -->					
+<!-- end:: Content Head -->	
 
 <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
 	<div class="row">
@@ -38,6 +38,18 @@
 	            </div>
 	        </div>
 	    </div>
+
+		@foreach ($recTenantsType as $item)
+		<div class="col-xl-4">
+	        <div class="alert alert-light alert-elevate fade show" role="alert">
+	            <div class="alert-text pl-20">
+	                <h5>Category : {{ $item->name }} <br>
+					Total Customer : <a href="{{ route('dashboard.tenant.type',['tenant_type_id'=>$item->id]) }}"> {{ count(Library::TenantsTotalByType($item->id)) }} </a>
+					</h5>
+				</div>
+	        </div>
+	    </div>
+		@endforeach
 	    
 	</div>
 
